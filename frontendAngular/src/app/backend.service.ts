@@ -7,7 +7,7 @@ import {Observable} from 'rxjs';
 })
 export class BackendService {
 
-   backendUrl = 'http://localhost:8080';
+  backendUrl = 'http://localhost:8080';
 
   constructor(private http: HttpClient) {
 
@@ -15,6 +15,14 @@ export class BackendService {
 
   test(): Observable<string> {
     return this.http.get(this.backendUrl + '/test', {headers: this.getHeaders(), responseType: 'text'});
+  }
+
+  checkLogin(login: string, password: string): Observable<boolean> {
+    return this.http.get<boolean>(this.backendUrl + '/login?login=' + login + '&password=' + password, {headers: this.getHeaders()});
+  }
+
+  modifyLogin(login: string, password: string): Observable<void> {
+    return this.http.post<void>(this.backendUrl + '/updateLogin?username=' + login + '&password=' + password, {headers: this.getHeaders()});
   }
 
   getHeaders(): HttpHeaders {

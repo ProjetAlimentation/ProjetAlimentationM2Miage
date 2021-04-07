@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import {BackendService} from './backend.service';
 
 @Component({
   selector: 'app-root',
@@ -7,12 +6,6 @@ import {BackendService} from './backend.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  test: string;
+  title = 'projectDiet';
 
-  constructor(private http: BackendService) {
-    this.http.test().subscribe(data => {
-      this.test = data;
-      console.log(this.test);
-    });
-  }
 }
