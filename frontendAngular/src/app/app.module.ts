@@ -27,12 +27,14 @@ import {AppRoutingModule} from './app-routing.module';
 import {DemoMaterialModule} from './material-module';
 import { MainNavigationComponent } from './main-navigation/main-navigation.component';
 import {RouterModule} from '@angular/router';
+import { NavComponent } from './nav/nav.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    MainNavigationComponent
+    MainNavigationComponent,
+    NavComponent
   ],
   imports: [
     HttpClientModule,
