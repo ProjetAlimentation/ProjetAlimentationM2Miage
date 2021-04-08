@@ -27,4 +27,10 @@ public class DietService {
         return weeklyDiet;
     }
 
+    public Boolean addDish(DishNutriwi dishNutriwi){
+        return dishJsonParser.addDishToDietList(dishNutriwi);
+    }
+
+
+
 }
