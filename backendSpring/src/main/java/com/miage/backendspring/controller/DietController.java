@@ -1,6 +1,6 @@
 package com.miage.backendspring.controller;
 
-import com.miage.backendspring.entity.diet.Dish;
+import com.miage.backendspring.entity.diet.DishNutriwi;
 import com.miage.backendspring.service.DietService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -18,7 +18,7 @@ public class DietController {
     private final DietService dietService;
 
     @GetMapping("/getWeeklyDiet")
-    public ResponseEntity<Map<String, List<Dish>>> getWeeklyDiet(){
+    public ResponseEntity<Map<String, List<DishNutriwi>>> getWeeklyDiet(){
         return ResponseEntity.ok(dietService.getWeeklyDiet());
     }
 }
