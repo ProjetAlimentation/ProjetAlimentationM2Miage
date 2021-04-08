@@ -87,12 +87,28 @@ public class DishJsonParser {
 
 
         try {
-            response = objectMapper.    readValue(inputStream, typeReference);
+            response = objectMapper.readValue(inputStream, typeReference);
         } catch (IOException e) {
             e.printStackTrace();
         }
 
         return response;
+    }
+
+    public Boolean addDishToDietList(DishNutriwi dishNutriwi) {
+        List<DishNutriwi> dietList = this.getDietList();
+        dietList.add(dishNutriwi);
+
+        if (dietList.contains(dishNutriwi)){
+            try {
+                objectMapper.writeValue(new File("src/main/resources/nutriwiClean.json"), dietList);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return true;
+        }else
+            return false;
+
     }
 
    /* public class CustomJsonDeserializer extends StdDeserializer<Dish>{

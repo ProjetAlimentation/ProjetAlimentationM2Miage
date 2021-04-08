@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppComponent } from './app.component';
 import {HttpClientModule} from '@angular/common/http';
+import { HomePageComponent } from './home-page/home-page.component';
 import { LoginComponent } from './login/login.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatToolbarModule} from '@angular/material/toolbar';
@@ -29,9 +29,11 @@ import { MainNavigationComponent } from './main-navigation/main-navigation.compo
 import {RouterModule} from '@angular/router';
 import { NavComponent } from './nav/nav.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
+    HomePageComponent,
     LoginComponent,
     MainNavigationComponent,
     NavComponent
