@@ -1,12 +1,11 @@
 package com.miage.backendspring.service;
 
 import com.miage.backendspring.config.DishJsonParser;
-import com.miage.backendspring.entity.diet.Dish;
+import com.miage.backendspring.entity.diet.DishNutriwi;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Component
@@ -14,13 +13,11 @@ public class DietService {
 
     private final DishJsonParser dishJsonParser;
 
-    public Map<String, List<Dish>> getWeeklyDiet(){
+    public Map<String, List<DishNutriwi>> getWeeklyDiet(){
 
-        Map<String,List<Dish>> weeklyDiet = new LinkedHashMap<>();
+        Map<String,List<DishNutriwi>> weeklyDiet = new LinkedHashMap<>();
 
-        List<Dish> dishes = dishJsonParser.parseJson().stream()
-                .filter(o -> o.getType().equals("Plat principal"))
-                .collect(Collectors.toList());
+        List<DishNutriwi> dishes = dishJsonParser.getDietList();
 
         Random rand = new Random();
 

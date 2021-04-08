@@ -1,14 +1,8 @@
 package com.miage.backendspring.config;
 
-import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.core.ObjectCodec;
 import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.DeserializationContext;
-import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
-import com.miage.backendspring.entity.diet.Dish;
+import com.miage.backendspring.entity.diet.DishNutriwi;
 import lombok.RequiredArgsConstructor;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Component;
@@ -22,13 +16,12 @@ public class DishJsonParser {
 
     private final ObjectMapper objectMapper;
 
+   /* public List<Dish3> parseJson() {
+        TypeReference<List<Dish3>> typeReference = new TypeReference<List<Dish3>>() {
+        };
+        InputStream inputStream = TypeReference.class.getResourceAsStream("/nutriwiClean.json");
 
-    @Cacheable("dietDB")
-    public List<Dish> parseJson(){
-        TypeReference<List<Dish>> typeReference = new TypeReference<List<Dish>>(){};
-        InputStream inputStream = TypeReference.class.getResourceAsStream("/dataClean.json");
-
-        List<Dish> response = null;
+        List<Dish3> response = null;
 
         try {
             //SimpleModule module = new SimpleModule("CustomJsonDeserializer", new Version(1, 0, 0, null, null, null));
@@ -36,45 +29,71 @@ public class DishJsonParser {
             //objectMapper.registerModule(module);
             response = objectMapper.readValue(inputStream, typeReference);
             //System.out.println(response.toString());
-            String s = objectMapper.writeValueAsString(response);
-            System.out.println(s);
+            //String s = objectMapper.writeValueAsString(response);
+            //System.out.println(s);
             //BufferedWriter writer = new BufferedWriter(new FileWriter("dataClean.json"));
             //writer.write(s);
             //writer.close();
 
-        /*    List<Dish2> dishes = new ArrayList<>();
-            for (Dish d: response) {
-                TypeReference<List<Dish2.Ingredient>> typeReferenceNode = new TypeReference<List<Dish2.Ingredient>>(){};
-                TypeReference<LinkedList<Dish2.PreparationSteps>> typeReferencePrepNode = new TypeReference<LinkedList<Dish2.PreparationSteps>>(){};
+            List<Dish2> dishes = new ArrayList<>();
+            for (Dish3 d : response) {
+                TypeReference<List<Dish4.Ingredient>> typeReferenceNodeIng = new TypeReference<List<Dish4.Ingredient>>() {
+                };
+                TypeReference<LinkedList<Dish4.PreparationStep>> typeReferencePrepNode = new TypeReference<LinkedList<Dish4.PreparationStep>>() {
+                };
+                TypeReference<LinkedList<Dish4.Profile>> typeReferenceProfile = new TypeReference<LinkedList<Dish4.Profile>>() {
+                };
+                TypeReference<LinkedList<Dish4.Nutrition>> typeReferenceNutrition = new TypeReference<LinkedList<Dish4.Nutrition>>() {
+                };
 
-                List<Dish2.Ingredient> ingredients = objectMapper.readValue(d.getIngredients(), typeReferenceNode);
-                LinkedList<Dish2.PreparationSteps> preparationSteps = objectMapper.readValue(d.getPreparationSteps(), typeReferencePrepNode);
+                List<Dish4.Ingredient> ingredients = objectMapper.readValue(d.getIngredient(), typeReferenceNodeIng);
+                List<Dish4.PreparationStep> preparationSteps = objectMapper.readValue(d.getPreparationStep(), typeReferencePrepNode);
+                List<Dish4.Profile> profiles = objectMapper.readValue(d.getProfile(), typeReferenceProfile);
+                List<Dish4.Nutrition> nutritions = objectMapper.readValue(d.getNutrition(), typeReferenceNutrition);
 
-                Dish2 dish = Dish2.builder().description(d.getDescription())
-                        .imageFileName(d.getImageFileName())
+                Dish2 dish = Dish2.builder()
+                        .imageSrc(d.getImageSrc())
                         .name(d.getName())
-                        .type(d.getType())
-                        .nbPersons(d.getNbPersons())
-                        .preparationTime(d.getPreparationTime())
-                        .ingredients(ingredients.stream().map(Dish2.Ingredient::getIngredient).collect(Collectors.toList()))
-                        .preparationSteps(preparationSteps.stream().map(Dish2.PreparationSteps::getPreparation_step).collect(Collectors.toList()))
+                        .portion(d.getPortions())
+                        .prepTime(d.getPrepTime())
+                        .ingredients(ingredients.stream().map(Dish4.Ingredient::getIngredient).collect(Collectors.toList()))
+                        .preparationSteps(preparationSteps.stream().map(Dish4.PreparationStep::getPreparationStep).collect(Collectors.toList()))
+                        .profile(profiles.stream().map(Dish4.Profile::getProfile).collect(Collectors.toList()))
+                        .nutrition(nutritions.stream().map(Dish4.Nutrition::getNutrition).collect(Collectors.toList()))
                         .build();
 
                 dishes.add(dish);
             }
             System.out.println(dishes.toString());
-            BufferedWriter writer = new BufferedWriter(new FileWriter("dataClean2.json"));
+            BufferedWriter writer = new BufferedWriter(new FileWriter("nutriwiClean.json"));
             String s = objectMapper.writeValueAsString(dishes);
             writer.write(s);
-            writer.close();*/
+            writer.close();
 
         } catch (IOException e) {
             e.printStackTrace();
         }
 
         return response;
-    }
+    }*/
 
+    @Cacheable("dietDB")
+    public List<DishNutriwi> getDietList() {
+        TypeReference<List<DishNutriwi>> typeReference = new TypeReference<List<DishNutriwi>>() {
+        };
+        InputStream inputStream = TypeReference.class.getResourceAsStream("/nutriwiClean.json");
+
+        List<DishNutriwi> response = null;
+
+
+        try {
+            response = objectMapper.    readValue(inputStream, typeReference);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return response;
+    }
 
    /* public class CustomJsonDeserializer extends StdDeserializer<Dish>{
 

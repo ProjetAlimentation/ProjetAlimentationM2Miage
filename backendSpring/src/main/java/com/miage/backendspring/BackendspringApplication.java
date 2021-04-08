@@ -30,7 +30,7 @@ public class BackendspringApplication {
 
     @PostConstruct
     public void init() {
-        dishJsonParser.parseJson();
+        dishJsonParser.getDietList();
     }
 
     @Bean
