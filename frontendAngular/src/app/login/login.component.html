@@ -1,0 +1,26 @@
+<div class="example-container">
+  <div class="form-container">
+    <h3>Log In</h3>
+    <p *ngIf="message" class="text-center error">{{message}}</p>
+    <form [formGroup]="loginForm" (submit)="submit()">
+      <mat-form-field class="form-field" appearance="outline">
+        <mat-label> Login
+        </mat-label>
+        <input matInput formControlName="login" required>
+        <mat-error *ngIf="loginForm.controls.login.touched && loginForm.controls.login.invalid">
+          <span *ngIf="loginForm.controls.login.errors.required">This field is mandatory.</span>
+          <span *ngIf="loginForm.controls.login.errors.pattern">This field is invalid.</span>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="form-field" appearance="outline">
+        <mat-label> Password
+        </mat-label>
+        <input matInput formControlName="password" type="password">
+        <mat-error *ngIf="loginForm.controls.password.touched && loginForm.controls.password.invalid">
+          <span *ngIf="loginForm.controls.password.errors.required">This field is mandatory.</span>
+        </mat-error>
+      </mat-form-field>
+      <button mat-raised-button color="primary" type="submit">Log In</button>
+    </form>
+  </div>
+</div>
