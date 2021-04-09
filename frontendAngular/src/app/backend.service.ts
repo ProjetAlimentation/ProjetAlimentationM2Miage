@@ -14,8 +14,8 @@ export class BackendService {
 
   }
 
-  getContacts(): Observable<Dish[]> {
-    return this.http.get<Dish[]>(this.backendUrl + '/getWeeklyDiet', {headers: this.getHeaders()});
+  getDishList(): Observable<Map<string, Dish[]>> {
+    return this.http.get<Map<string, Dish[]>>(this.backendUrl + '/getWeeklyDiet', {headers: this.getHeaders()});
   }
 
   test(): Observable<string> {

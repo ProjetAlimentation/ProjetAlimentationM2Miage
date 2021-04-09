@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {BackendService} from '../backend.service';
+import {Dish} from '../models/Dish';
 
 @Component({
   selector: 'app-weekly-diet',
@@ -8,18 +9,20 @@ import {BackendService} from '../backend.service';
 })
 export class WeeklyDietComponent implements OnInit {
 
-  constructor(private backendService: BackendService) { }
+  dishList: Dish[] = [];
+  dishMap: Map<string, Dish[]> = new Map<string, Dish[]>();
+
+  constructor(private backendService: BackendService) {}
 
   ngOnInit(): void {
+    this.backendService.getDishList().subscribe(dishMap => {
+      this.dishMap = dishMap;
+  });
+
+    console.log(this.dishMap);
+
   }
 
 
-  getDietList(): void {
-    this.backendService.getGroups().subscribe(groups => {
-      this.dataSource = new MatTableDataSource(groups);
-      this.dataSource.paginator = this.paginator;
-      this.dataSource.sort = this.sort;
-    });
-  }
 
 }

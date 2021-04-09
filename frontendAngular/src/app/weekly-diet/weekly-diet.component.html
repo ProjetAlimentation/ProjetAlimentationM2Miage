@@ -1,10 +1,44 @@
+<mat-grid-list cols="7" >
+
+  <div *ngFor="let dish of dishMap | keyvalue">
+    <mat-grid-tile>
 
 
-<div *ngFor="let index of [1,2,3,4,5,6,7]">
-  <mat-card>
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>{{ dish.key.replace('_',' ')}} </mat-card-title>
+        </mat-card-header>
 
-    <p>This is a paragraph.</p>
-    <p>This is another paragraph.</p>
+        <p>Repas du jour</p>
+        <mat-card class="mat-card-sub">
+          <mat-card-header>
+            <mat-card-title>{{dish.value[0].name}}</mat-card-title>
+          </mat-card-header>
 
-  </mat-card>
-</div>
+          <mat-card-content>
+            <p>Temps de préparation: {{dish.value[0].prepTime}} min</p>
+              <span *ngFor="let profile of dish.value[0].profile let isLast=last" >
+                {{profile}}{{isLast ? '' : ', '}}
+              </span>
+          </mat-card-content>
+        </mat-card>
+
+        <p>Repas du soir</p>
+        <mat-card class="mat-card-sub">
+          <mat-card-header>
+            <mat-card-title>{{dish.value[1].name}}</mat-card-title>
+          </mat-card-header>
+
+          <mat-card-content>
+            <p>Temps de préparation: {{dish.value[0].prepTime}} min</p>
+            <span *ngFor="let profile of dish.value[0].profile let isLast=last" >
+                {{profile}}{{isLast ? '' : ', '}}
+              </span>
+          </mat-card-content>
+        </mat-card>
+
+
+      </mat-card>
+    </mat-grid-tile>
+  </div>
+</mat-grid-list>
