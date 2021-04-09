@@ -1,6 +1,6 @@
 package com.miage.backendspring.controller;
 
-import com.miage.backendspring.entity.Profil;
+import com.miage.backendspring.entity.ProfilEnum;
 import com.miage.backendspring.entity.diet.DishNutriwi;
 import com.miage.backendspring.service.DietService;
 import lombok.RequiredArgsConstructor;
@@ -27,8 +27,8 @@ public class DietController {
     }
 
     @GetMapping("/getWeeklyDietNutriwi")
-    public ResponseEntity<Map<String, List<DishNutriwi>>> getWeeklyDiet(@RequestParam("profil") Profil profil){
-        return ResponseEntity.ok(dietService.getWeeklyDiet(profil));
+    public ResponseEntity<Map<String, List<DishNutriwi>>> getWeeklyDiet(@RequestParam("profil") ProfilEnum profilEnum){
+        return ResponseEntity.ok(dietService.getWeeklyDiet(profilEnum));
     }
 
     @PostMapping("saveDiet")

@@ -1,6 +1,6 @@
 package com.miage.backendspring.entity;
 
-public enum Profil {
+public enum ProfilEnum {
 
      VEGETARIAN ("Végétarien"),
      GLUTEN_FREE ("Sans gluten"),
@@ -8,7 +8,7 @@ public enum Profil {
 
      private String displayName;
 
-     Profil(String displayName) {
+     ProfilEnum(String displayName) {
           this.displayName = displayName;
      }
 

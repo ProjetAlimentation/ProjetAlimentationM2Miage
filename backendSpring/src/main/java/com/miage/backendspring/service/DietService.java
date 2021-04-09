@@ -1,7 +1,7 @@
 package com.miage.backendspring.service;
 
 import com.miage.backendspring.config.DishJsonParser;
-import com.miage.backendspring.entity.Profil;
+import com.miage.backendspring.entity.ProfilEnum;
 import com.miage.backendspring.entity.diet.DishNutriwi;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -29,11 +29,11 @@ public class DietService {
         return weeklyDiet;
     }
 
-    public Map<String, List<DishNutriwi>> getWeeklyDiet(Profil profil){
+    public Map<String, List<DishNutriwi>> getWeeklyDiet(ProfilEnum profilEnum){
 
         Map<String,List<DishNutriwi>> weeklyDiet = new LinkedHashMap<>();
 
-        List<DishNutriwi> dishes = dishJsonParser.getDietList().stream().filter(e -> e.getProfile().contains(profil.toString())).collect(Collectors.toList());
+        List<DishNutriwi> dishes = dishJsonParser.getDietList().stream().filter(e -> e.getProfile().contains(profilEnum.toString())).collect(Collectors.toList());
 
         Random rand = new Random();
 
