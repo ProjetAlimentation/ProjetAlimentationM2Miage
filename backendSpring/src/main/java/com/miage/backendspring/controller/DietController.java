@@ -7,6 +7,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -26,8 +28,11 @@ public class DietController {
 
     @GetMapping("/getWeeklyDietNutriwi")
     public ResponseEntity<Map<String, List<DishNutriwi>>> getWeeklyDiet(@RequestParam("profil") Profil profil){
-        int cmpt = 0;
         return ResponseEntity.ok(dietService.getWeeklyDiet(profil));
     }
 
+    @PostMapping("saveDiet")
+    public ResponseEntity<Boolean> saveDiet(@RequestBody DishNutriwi dishNutriwi){
+       return ResponseEntity.ok(dietService.addDish(dishNutriwi));
+    }
 }

@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Component
@@ -32,17 +33,8 @@ public class DietService {
 
         Map<String,List<DishNutriwi>> weeklyDiet = new LinkedHashMap<>();
 
-        List<DishNutriwi> dishes = new ArrayList<DishNutriwi>();
-        dishes = (List<DishNutriwi>) dishJsonParser.getDietList().stream().filter(e -> e.getProfile().contains(profil.toString()));
+        List<DishNutriwi> dishes = dishJsonParser.getDietList().stream().filter(e -> e.getProfile().contains(profil.toString())).collect(Collectors.toList());
 
-        /*while (it.hasNext())
-        {
-            DishNutriwi dn = it.next();
-            if(dn.getProfile().contains(profil.toString()))
-            {
-                dishes.add(dn);
-            }
-        }*/
         Random rand = new Random();
 
         for(int i = 1; i <= 7; i++){
@@ -50,4 +42,10 @@ public class DietService {
         }
         return weeklyDiet;
     }
+
+    public Boolean addDish(DishNutriwi dishNutriwi){
+        return dishJsonParser.addDishToDietList(dishNutriwi);
+    }
+
+
 }
