@@ -1,7 +1,7 @@
 package com.miage.backendspring.service;
 
-import com.miage.backendspring.config.DishJsonParser;
-import com.miage.backendspring.entity.ProfilEnum;
+import com.miage.backendspring.dao.DietDAO;
+import com.miage.backendspring.entity.ProfileEnum;
 import com.miage.backendspring.entity.diet.DishNutriwi;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -13,13 +13,17 @@ import java.util.stream.Collectors;
 @Component
 public class DietService {
 
-    private final DishJsonParser dishJsonParser;
+    private final DietDAO dietDAO;
 
+    /**
+     * Generate weekly diet containing 2 dishes a day randomly
+     * @return
+     */
     public Map<String, List<DishNutriwi>> getWeeklyDiet(){
 
         Map<String,List<DishNutriwi>> weeklyDiet = new LinkedHashMap<>();
 
-        List<DishNutriwi> dishes = dishJsonParser.getDietList();
+        List<DishNutriwi> dishes = dietDAO.getDietList();
 
         Random rand = new Random();
 
@@ -29,11 +33,17 @@ public class DietService {
         return weeklyDiet;
     }
 
-    public Map<String, List<DishNutriwi>> getWeeklyDiet(ProfilEnum profilEnum){
+
+    /**
+     * Generate weekly diet containing 2 dishes a day randomly by profile
+     * @param profileEnum
+     * @return
+     */
+    public Map<String, List<DishNutriwi>> getWeeklyDiet(ProfileEnum profileEnum){
 
         Map<String,List<DishNutriwi>> weeklyDiet = new LinkedHashMap<>();
 
-        List<DishNutriwi> dishes = dishJsonParser.getDietList().stream().filter(e -> e.getProfile().contains(profilEnum.toString())).collect(Collectors.toList());
+        List<DishNutriwi> dishes = dietDAO.getDietList().stream().filter(e -> e.getProfile().contains(profileEnum.toString())).collect(Collectors.toList());
 
         Random rand = new Random();
 
@@ -43,8 +53,14 @@ public class DietService {
         return weeklyDiet;
     }
 
+
+    /**
+     * Add a dish to list
+     * @param dishNutriwi
+     * @return
+     */
     public Boolean addDish(DishNutriwi dishNutriwi){
-        return dishJsonParser.addDishToDietList(dishNutriwi);
+        return dietDAO.addDishToDietList(dishNutriwi);
     }
 
 

@@ -13,8 +13,7 @@ import javax.transaction.Transactional;
 @RequiredArgsConstructor
 public class UserDAO {
 
-    @Autowired
-    private EntityManager em;
+    private final EntityManager em;
 
     @Transactional
     public void updateLogin(String username, String password) {

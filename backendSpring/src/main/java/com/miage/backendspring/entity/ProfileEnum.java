@@ -1,16 +1,16 @@
 package com.miage.backendspring.entity;
 
-public enum ProfilEnum {
+import lombok.AllArgsConstructor;
+import lombok.Data;
+
+@AllArgsConstructor
+public enum ProfileEnum {
 
      VEGETARIAN ("Végétarien"),
      GLUTEN_FREE ("Sans gluten"),
      LACTOSE_FREE ("Sans lactose");
 
      private String displayName;
-
-     ProfilEnum(String displayName) {
-          this.displayName = displayName;
-     }
 
      public String displayName() { return displayName; }
 
