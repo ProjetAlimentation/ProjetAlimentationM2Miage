@@ -1,12 +1,11 @@
 package com.miage.backendspring;
 
-import com.miage.backendspring.config.DishJsonParser;
+import com.miage.backendspring.dao.DietDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.spi.DocumentationType;
@@ -14,7 +13,6 @@ import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 import javax.annotation.PostConstruct;
-import java.util.Arrays;
 
 @SpringBootApplication
 @EnableCaching
@@ -22,7 +20,7 @@ import java.util.Arrays;
 public class BackendspringApplication {
 
     @Autowired
-    DishJsonParser dishJsonParser;
+    DietDAO dietDAO;
 
     public static void main(String[] args) {
         SpringApplication.run(BackendspringApplication.class, args);
@@ -30,7 +28,7 @@ public class BackendspringApplication {
 
     @PostConstruct
     public void init() {
-        dishJsonParser.getDietList();
+        dietDAO.getDietList();
     }
 
     @Bean
