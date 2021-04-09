@@ -2,20 +2,22 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {RouterModule, Routes} from '@angular/router';
 import {LoginComponent} from './login/login.component';
-import {MainNavigationComponent} from './main-navigation/main-navigation.component';
 import {AuthGuard} from './login/auth.guard';
 import {NavComponent} from './nav/nav.component';
+import {WeeklyDietComponent} from './weekly-diet/weekly-diet.component';
 
 const routes: Routes = [
   {
     path: 'login', component: LoginComponent
   },
   {
-    path: 'main', component: NavComponent, canActivate: [AuthGuard]
+    path: '', redirectTo: '/dashboard', pathMatch: 'full'
   },
   {
-    path: '', redirectTo: '/main', pathMatch: 'full'
-  }
+    path: 'dashboard', component: NavComponent, canActivate: [AuthGuard],
+    children: [
+      { path: 'weekly-diet', component: WeeklyDietComponent}
+    ]}
   ];
 
 @NgModule({

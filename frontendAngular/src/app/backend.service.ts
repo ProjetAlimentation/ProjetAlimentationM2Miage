@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
+import {Dish} from './models/Dish';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +12,10 @@ export class BackendService {
 
   constructor(private http: HttpClient) {
 
+  }
+
+  getContacts(): Observable<Dish[]> {
+    return this.http.get<Dish[]>(this.backendUrl + '/getWeeklyDiet', {headers: this.getHeaders()});
   }
 
   test(): Observable<string> {

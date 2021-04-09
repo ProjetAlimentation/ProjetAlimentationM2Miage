@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {BackendService} from '../backend.service';
 
 @Component({
   selector: 'app-weekly-diet',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WeeklyDietComponent implements OnInit {
 
-  constructor() { }
+  constructor(private backendService: BackendService) { }
 
   ngOnInit(): void {
+  }
+
+
+  getDietList(): void {
+    this.backendService.getGroups().subscribe(groups => {
+      this.dataSource = new MatTableDataSource(groups);
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
+    });
   }
 
 }
