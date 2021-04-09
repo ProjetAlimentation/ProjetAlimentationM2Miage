@@ -1,8 +1,9 @@
 package com.miage.backendspring.controller;
 
-import com.miage.backendspring.entity.ProfilEnum;
+import com.miage.backendspring.entity.ProfileEnum;
 import com.miage.backendspring.entity.diet.DishNutriwi;
 import com.miage.backendspring.service.DietService;
+import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,16 +22,19 @@ public class DietController {
 
     private final DietService dietService;
 
+    @Operation(summary = "Get weekly diet, 2 dishes a day")
     @GetMapping("/getWeeklyDiet")
     public ResponseEntity<Map<String, List<DishNutriwi>>> getWeeklyDiet(){
         return ResponseEntity.ok(dietService.getWeeklyDiet());
     }
 
-    @GetMapping("/getWeeklyDietNutriwi")
-    public ResponseEntity<Map<String, List<DishNutriwi>>> getWeeklyDiet(@RequestParam("profil") ProfilEnum profilEnum){
-        return ResponseEntity.ok(dietService.getWeeklyDiet(profilEnum));
+    @Operation(summary = "Get weekly diet by profile")
+    @GetMapping("/getWeeklyDietByProfile")
+    public ResponseEntity<Map<String, List<DishNutriwi>>> getWeeklyDietByProfile(@RequestParam("profileEnum") ProfileEnum profileEnum){
+        return ResponseEntity.ok(dietService.getWeeklyDiet(profileEnum));
     }
 
+    @Operation(summary = "Save a diet")
     @PostMapping("saveDiet")
     public ResponseEntity<Boolean> saveDiet(@RequestBody DishNutriwi dishNutriwi){
        return ResponseEntity.ok(dietService.addDish(dishNutriwi));
