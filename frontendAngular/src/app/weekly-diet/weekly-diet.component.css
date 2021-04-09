@@ -1,0 +1,33 @@
+:host /deep/  .mat-grid-tile .mat-figure {
+  display: block;
+  position: absolute;
+}
+
+
+.mat-card-title{
+  font-size: 2em;
+
+}
+
+:host /deep/ .mat-card-header-text{
+  margin: auto;
+  font-size: 0.5em;
+}
+
+:host /deep/ .mat-card-sub{
+  height: 200px;
+  margin-bottom: 25px;
+}
+
+:host /deep/ .mat-card-content{
+  font-size: 0.8em;
+}
+
+:host /deep/ .mat-card{
+  padding: 5px;
+}
+
+:host /deep/ .mat-grid-tile{
+  height: 600px;
+}
+

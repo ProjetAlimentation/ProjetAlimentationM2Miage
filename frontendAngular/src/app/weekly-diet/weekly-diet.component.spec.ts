@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MainNavigationComponent } from './main-navigation.component';
+import { WeeklyDietComponent } from './weekly-diet.component';
 
-describe('MainNavigationComponent', () => {
-  let component: MainNavigationComponent;
-  let fixture: ComponentFixture<MainNavigationComponent>;
+describe('WeeklyDietComponent', () => {
+  let component: WeeklyDietComponent;
+  let fixture: ComponentFixture<WeeklyDietComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ MainNavigationComponent ]
+      declarations: [ WeeklyDietComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(MainNavigationComponent);
+    fixture = TestBed.createComponent(WeeklyDietComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

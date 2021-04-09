@@ -25,9 +25,9 @@ import {MatSortModule} from '@angular/material/sort';
 import {MatInputModule} from '@angular/material/input';
 import {AppRoutingModule} from './app-routing.module';
 import {DemoMaterialModule} from './material-module';
-import { MainNavigationComponent } from './main-navigation/main-navigation.component';
 import {RouterModule} from '@angular/router';
 import { NavComponent } from './nav/nav.component';
+import {WeeklyDietComponent} from './weekly-diet/weekly-diet.component';
 
 
 @NgModule({
@@ -35,8 +35,8 @@ import { NavComponent } from './nav/nav.component';
     AppComponent,
     HomePageComponent,
     LoginComponent,
-    MainNavigationComponent,
-    NavComponent
+    NavComponent,
+    WeeklyDietComponent
   ],
   imports: [
     HttpClientModule,
