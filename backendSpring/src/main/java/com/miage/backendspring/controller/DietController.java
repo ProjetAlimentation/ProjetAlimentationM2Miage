@@ -2,6 +2,7 @@ package com.miage.backendspring.controller;
 
 import com.miage.backendspring.entity.diet.DishNutriwi;
 import com.miage.backendspring.service.DietService;
+import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,11 +20,13 @@ public class DietController {
 
     private final DietService dietService;
 
+    @Operation(summary = "Get weekly diet, 2 dishes a day")
     @GetMapping("/getWeeklyDiet")
     public ResponseEntity<Map<String, List<DishNutriwi>>> getWeeklyDiet(){
         return ResponseEntity.ok(dietService.getWeeklyDiet());
     }
-    
+
+    @Operation(summary = "Save a diet")
     @PostMapping("saveDiet")
     public ResponseEntity<Boolean> saveDiet(@RequestBody DishNutriwi dishNutriwi){
        return ResponseEntity.ok(dietService.addDish(dishNutriwi));
