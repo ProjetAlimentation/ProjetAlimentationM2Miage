@@ -5,8 +5,12 @@
       [opened]="(isHandset$ | async) === false">
     <mat-toolbar>Menu</mat-toolbar>
     <mat-nav-list>
-      <a mat-list-item [routerLink]="['weekly-diet']">Les menus</a>
-      <a mat-list-item href="#" class="logout" (click)="logout()">Logout</a>
+      <a mat-list-item [routerLink]="['weekly-diet']">
+        <mat-icon aria-hidden="false" aria-label="Example home icon">restaurant</mat-icon>
+        Les menus</a>
+      <a mat-list-item href="#" class="logout" (click)="logout()">
+        <mat-icon aria-hidden="false" aria-label="Example home icon">logout</mat-icon>
+        Se deconnecter</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>

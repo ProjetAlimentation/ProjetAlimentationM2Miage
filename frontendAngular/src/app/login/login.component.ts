@@ -42,7 +42,7 @@ export class LoginComponent implements OnInit {
             console.log('Login successful');
             localStorage.setItem('isLoggedIn', 'true');
             localStorage.setItem('token', this.loginForm.controls.login.value);
-            this.router.navigate(['/main']);
+            this.router.navigate(['/dashboard']);
           } else {
             this.message = 'Please check your login and password';
           }
