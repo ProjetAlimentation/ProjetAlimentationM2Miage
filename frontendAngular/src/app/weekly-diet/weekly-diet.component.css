@@ -15,7 +15,7 @@
 }
 
 :host /deep/ .mat-card-sub{
-  height: 200px;
+  height: 450px;
   margin-bottom: 25px;
 }
 
@@ -28,6 +28,22 @@
 }
 
 :host /deep/ .mat-grid-tile{
-  height: 600px;
+  height: 900px;
 }
 
+
+.mat-card-subtitle {
+  text-align: center;
+}
+
+.mat-card-image{
+  width: 100%;
+  margin:unset;
+  height: 100px; /* height of container */
+  object-fit: cover;
+}
+
+.mat-card-image:first-child{
+  margin-top: unset;
+
+}

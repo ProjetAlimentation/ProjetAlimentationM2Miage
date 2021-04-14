@@ -1,6 +1,7 @@
 package com.miage.backendspring;
 
 import com.miage.backendspring.dao.DietDAO;
+import com.miage.backendspring.entity.diet.DishNutriwi;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

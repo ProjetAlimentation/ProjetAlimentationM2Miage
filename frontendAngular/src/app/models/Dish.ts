@@ -6,4 +6,5 @@ export interface Dish{
   profile: string[];
   nutrition: string[];
   preparationSteps: string[];
+  imageSrc: string;
 }

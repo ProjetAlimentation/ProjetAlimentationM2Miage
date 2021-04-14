@@ -15,24 +15,6 @@ public class DietService {
 
     private final DietDAO dietDAO;
 
-    /**
-     * Generate weekly diet containing 2 dishes a day randomly
-     * @return
-     */
-    public Map<String, List<DishNutriwi>> getWeeklyDiet(){
-
-        Map<String,List<DishNutriwi>> weeklyDiet = new LinkedHashMap<>();
-
-        List<DishNutriwi> dishes = dietDAO.getDietList();
-
-        Random rand = new Random();
-
-        for(int i = 1; i <= 7; i++){
-            weeklyDiet.put("Jour_"+i, Arrays.asList(dishes.get(rand.nextInt(dishes.size())),dishes.get(rand.nextInt(dishes.size()))));
-        }
-        return weeklyDiet;
-    }
-
 
     /**
      * Generate weekly diet containing 2 dishes a day randomly by profile
@@ -43,12 +25,25 @@ public class DietService {
 
         Map<String,List<DishNutriwi>> weeklyDiet = new LinkedHashMap<>();
 
-        List<DishNutriwi> dishes = dietDAO.getDietList().stream().filter(e -> e.getProfile().contains(profileEnum.toString())).collect(Collectors.toList());
+        List<DishNutriwi> dishes;
+
+        if(profileEnum != null){
+            dishes = dietDAO.getDietList().stream().filter(e -> e.getProfile().contains(profileEnum.toString())).collect(Collectors.toList());
+        } else {
+            dishes = dietDAO.getDietList();
+        }
 
         Random rand = new Random();
 
         for(int i = 1; i <= 7; i++){
-            weeklyDiet.put("Jour_"+i, Arrays.asList(dishes.get(rand.nextInt(dishes.size())),dishes.get(rand.nextInt(dishes.size()))));
+            DishNutriwi day = dishes.get(rand.nextInt(dishes.size()));
+            DishNutriwi evening = dishes.get(rand.nextInt(dishes.size()));
+
+            if (day.equals(evening)) {
+                day = dishes.get(rand.nextInt(dishes.size()));
+            }
+
+            weeklyDiet.put("Jour_"+i, Arrays.asList(day, evening));
         }
         return weeklyDiet;
     }

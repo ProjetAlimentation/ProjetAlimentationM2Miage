@@ -22,15 +22,11 @@ public class DietController {
 
     private final DietService dietService;
 
-    @Operation(summary = "Get weekly diet, 2 dishes a day")
-    @GetMapping("/getWeeklyDiet")
-    public ResponseEntity<Map<String, List<DishNutriwi>>> getWeeklyDiet(){
-        return ResponseEntity.ok(dietService.getWeeklyDiet());
-    }
 
     @Operation(summary = "Get weekly diet by profile")
     @GetMapping("/getWeeklyDietByProfile")
-    public ResponseEntity<Map<String, List<DishNutriwi>>> getWeeklyDietByProfile(@RequestParam("profileEnum") ProfileEnum profileEnum){
+    public ResponseEntity<Map<String, List<DishNutriwi>>> getWeeklyDietByProfile(@RequestParam(value = "profile", required = false)
+                                                                                             ProfileEnum profileEnum){
         return ResponseEntity.ok(dietService.getWeeklyDiet(profileEnum));
     }
 
