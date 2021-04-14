@@ -7,12 +7,11 @@ import lombok.Data;
 public enum ProfileEnum {
 
      VEGETARIAN ("Végétarien"),
+     VEGETALIEN ("Végétalien"),
      GLUTEN_FREE ("Sans gluten"),
      LACTOSE_FREE ("Sans lactose");
 
      private String displayName;
-
-     public String displayName() { return displayName; }
 
      @Override
      public String toString() { return displayName; }
