@@ -28,6 +28,7 @@ import {DemoMaterialModule} from './material-module';
 import {RouterModule} from '@angular/router';
 import { NavComponent } from './nav/nav.component';
 import {WeeklyDietComponent} from './weekly-diet/weekly-diet.component';
+import { DishPageComponent } from './dish-page/dish-page.component';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import {WeeklyDietComponent} from './weekly-diet/weekly-diet.component';
     HomePageComponent,
     LoginComponent,
     NavComponent,
-    WeeklyDietComponent
+    WeeklyDietComponent,
+    DishPageComponent
   ],
   imports: [
     HttpClientModule,
