@@ -34,19 +34,19 @@ public class Profile {
         this.nutritionalQualites.add(new NutritionalQuality(NUTRI_SCORE, 3)); //par défaut on sélectionne la plus haute valeur (3) nutritionnel du produit
 
         switch (profile.name()) {
-            case "Cholesterol":
+            case "CHOLESTEROL":
                 this.nutritionalQualites.add(new NutritionalQuality(LOW_SALT, 3));
                 this.nutritionalQualites.add(new NutritionalQuality(LOW_SUGAR, 1));
                 this.nutritionalQualites.add(new NutritionalQuality(LOW_FAT, 1));
                 this.nutritionalQualites.add(new NutritionalQuality(LOW_SATURATED_FATTY_ACIDS, 2));
                 break;
-            case "Diabétique":
+            case "DIABETIC":
                 this.nutritionalQualites.add(new NutritionalQuality(LOW_SALT, 2));
                 this.nutritionalQualites.add(new NutritionalQuality(LOW_SUGAR, 3));
                 this.nutritionalQualites.add(new NutritionalQuality(LOW_FAT, 1));
                 this.nutritionalQualites.add(new NutritionalQuality(LOW_SATURATED_FATTY_ACIDS, 0)); //au contraire ils sont protecteur
                 break;
-            case "Hypertension artérielle":
+            case "HIGH_BLOOD_PRESSURE":
                 this.nutritionalQualites.add(new NutritionalQuality(LOW_SALT, 2));
                 this.nutritionalQualites.add(new NutritionalQuality(LOW_SUGAR, 1));
                 this.nutritionalQualites.add(new NutritionalQuality(LOW_FAT, 2));
