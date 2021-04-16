@@ -1,4 +1,4 @@
-package com.miage.backendspring.entity;
+package com.miage.backendspring.service.profiles;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -6,7 +6,7 @@ import lombok.Data;
 import java.util.HashSet;
 import java.util.Set;
 
-import static com.miage.backendspring.entity.NutritionalQualityEnum.*;
+import static com.miage.backendspring.service.profiles.NutritionalQualityEnum.*;
 
 @Data
 @AllArgsConstructor

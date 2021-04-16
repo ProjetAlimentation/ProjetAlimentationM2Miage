@@ -1,4 +1,4 @@
-package com.miage.backendspring.entity;
+package com.miage.backendspring.service.profiles;
 
 import lombok.AllArgsConstructor;
 

@@ -1,8 +1,8 @@
 package com.miage.backendspring;
 
-import com.miage.backendspring.entity.AllergenEnum;
-import com.miage.backendspring.entity.Profile;
-import com.miage.backendspring.entity.ProfileEnum;
+import com.miage.backendspring.service.profiles.AllergenEnum;
+import com.miage.backendspring.service.profiles.Profile;
+import com.miage.backendspring.service.profiles.ProfileEnum;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
