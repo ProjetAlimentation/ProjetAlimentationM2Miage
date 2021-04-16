@@ -12,7 +12,8 @@ import {BackendService} from '../backend.service';
 export class DishPageComponent implements OnInit {
 
   dish: Dish;
-  openFoodFactsProducts: OpenFoodFactsProduct[] = [];
+  openFoodFactsProducts: OpenFoodFactsProduct[];
+  listNutrition: string[] = ['Protéines', 'Lipides', 'Acides gras saturés', 'Glucides', 'Sucre', 'Sel', 'Fibres', 'Énergie'];
 
   constructor(@Inject(MAT_DIALOG_DATA) data, private backendService: BackendService) {
     this.dish = data;
@@ -21,16 +22,10 @@ export class DishPageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.dish.ingredients.forEach(o => {
-      this.backendService.getOpenFoodFactsProducts(o).subscribe(product => {
-        console.log('pr' + product[0]);
-        if (product.length !== 0){
-          this.openFoodFactsProducts.push(product[0]);
-        }
+      this.backendService.getOpenFoodFactsProducts(this.dish.ingredients).subscribe(product => {
+        console.log('pr' + product);
+        this.openFoodFactsProducts = product;
       });
-    });
-    console.log(this.openFoodFactsProducts.length);
-
   }
 
 }

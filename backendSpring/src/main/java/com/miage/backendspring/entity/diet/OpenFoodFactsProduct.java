@@ -23,6 +23,8 @@ public class OpenFoodFactsProduct {
     @JsonProperty("image_front_small_url")
     private String image;
     private String stores;
+    @JsonProperty("nutrition_grades")
+    private String nutritionGrade;
 
 
 }

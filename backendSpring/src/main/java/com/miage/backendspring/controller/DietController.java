@@ -42,16 +42,8 @@ public class DietController {
     }
 
 
-    @GetMapping("/getOpenFoodFactsProducts")
-    public ResponseEntity<List<OpenFoodFactsProduct>> getOpenFoodFactsProducts(@RequestParam(value = "productType")
-                                                                           String productType){
-        String queryStr = null;
-        try {
-             queryStr = URLDecoder.decode(productType, "UTF-8");
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        }
-
-        return ResponseEntity.ok(openFoodFactsService.getOpenFoodFactsResponse(queryStr).getProducts());
+    @PostMapping("/getOpenFoodFactsProducts")
+    public ResponseEntity<List<OpenFoodFactsProduct>> getOpenFoodFactsProducts(@RequestBody List<String> productTypeList){
+        return ResponseEntity.ok(openFoodFactsService.getOpenFoodFactsResponse(productTypeList));
     }
 }

@@ -53,7 +53,7 @@ public class DietService {
                     String strFilter = str;
 
                     if(str.contains(",")){
-                        strFilter = str.substring(0, str.indexOf(","));
+                        strFilter = ²);
                     }
 
                     List<OpenFoodFactsProduct> products = openFoodFactsAPI.getOpenFoodFactsProducts(strFilter).getProducts();
