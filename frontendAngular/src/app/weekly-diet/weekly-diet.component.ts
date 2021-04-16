@@ -4,6 +4,8 @@ import {Dish} from '../models/Dish';
 // @ts-ignore
 import {ProfileInterface} from '../models/ProfileInterface';
 import {FormControl, Validators} from '@angular/forms';
+import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
+import {DishPageComponent} from '../dish-page/dish-page.component';
 
 
 @Component({
@@ -23,7 +25,7 @@ export class WeeklyDietComponent implements OnInit {
     {value: 'LACTOSE_FREE', viewValue: 'Sans lactose'}
   ];
 
-  constructor(private backendService: BackendService) {}
+  constructor(private backendService: BackendService, private dialog: MatDialog) {}
 
   ngOnInit(): void {
     this.backendService.getDishListAll().subscribe(dishMap => {
@@ -40,5 +42,16 @@ export class WeeklyDietComponent implements OnInit {
     });
   }
 
+  openDialog(dish: Dish): void {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.data = dish;
+    dialogConfig.width = '1200px';
+
+    const dialogRef = this.dialog.open(DishPageComponent, dialogConfig);
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
 
 }

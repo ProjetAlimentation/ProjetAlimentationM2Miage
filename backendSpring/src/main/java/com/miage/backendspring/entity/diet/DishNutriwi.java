@@ -25,4 +25,6 @@ public class DishNutriwi {
     private List<String> preparationSteps = new LinkedList<>();
     private String imageSrc;
 
+    private List<OpenFoodFactsProduct> openFoodFactsProducts = new ArrayList<>();
+
 }

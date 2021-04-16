@@ -29,6 +29,7 @@ import {RouterModule} from '@angular/router';
 import { NavComponent } from './nav/nav.component';
 import {WeeklyDietComponent} from './weekly-diet/weekly-diet.component';
 import { MonitoringComponent } from './monitoring/monitoring.component';
+import { DishPageComponent } from './dish-page/dish-page.component';
 
 
 @NgModule({
@@ -39,6 +40,7 @@ import { MonitoringComponent } from './monitoring/monitoring.component';
     NavComponent,
     WeeklyDietComponent,
     MonitoringComponent
+    DishPageComponent
   ],
   imports: [
     HttpClientModule,

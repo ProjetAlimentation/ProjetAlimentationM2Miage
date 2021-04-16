@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Dish} from './models/Dish';
+import {OpenFoodFactsProduct} from './models/OpenFoodFactsProduct';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +13,10 @@ export class BackendService {
 
   constructor(private http: HttpClient) {
 
+  }
+
+  getOpenFoodFactsProducts(productType: string[]): Observable<OpenFoodFactsProduct[]> {
+    return this.http.post<OpenFoodFactsProduct[]>(this.backendUrl + '/getOpenFoodFactsProducts', productType, {headers: this.getHeaders()});
   }
 
   getDishList(profile: string): Observable<Map<string, Dish[]>> {

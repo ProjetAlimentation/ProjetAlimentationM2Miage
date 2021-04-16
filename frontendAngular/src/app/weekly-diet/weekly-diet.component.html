@@ -13,13 +13,15 @@
     <mat-grid-tile>
 
 
+
       <mat-card>
         <mat-card-header>
           <mat-card-title>{{ dish.key.replace('_',' ')}} </mat-card-title>
         </mat-card-header>
 
         <mat-card-subtitle>Déjeuner</mat-card-subtitle>
-        <mat-card class="mat-card-sub">
+
+        <mat-card class="mat-card-sub"  (click)="openDialog(dish.value[0])">
           <img mat-card-image src="{{'assets/' + dish.value[0].imageSrc}}">
 
           <mat-card-header>
@@ -49,7 +51,9 @@
         </mat-card>
 
         <mat-card-subtitle>Dîner</mat-card-subtitle>
-        <mat-card class="mat-card-sub">
+
+
+        <mat-card class="mat-card-sub"  (click)="openDialog(dish.value[1])">
           <img mat-card-image src="{{'assets/' + dish.value[1].imageSrc}}">
 
           <mat-card-header>
