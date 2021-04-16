@@ -5,6 +5,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.time.LocalDate;
+import java.util.Date;
 
 @Entity(name = "MONITORING")
 @Data
@@ -18,6 +20,8 @@ public class Monitoring {
 
     private double weight;
     private int mental;
+    private int diet;
+    private LocalDate date;
 /*
     @ManyToOne
     @JoinColumn(name="id")

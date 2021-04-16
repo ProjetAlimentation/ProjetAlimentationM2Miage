@@ -16,8 +16,8 @@ public class MonitoringController {
     private final MonitoringService monitoringService;
 
     @GetMapping("/addMonitoring")
-    public boolean addMonitoring(@RequestParam("weight") double weight, @RequestParam("mental") int mental) {
-        return monitoringService.createAndSaveMonitoring(weight, mental);
+    public boolean addMonitoring(@RequestParam("weight") double weight, @RequestParam("mental") int mental, @RequestParam("diet") int diet) {
+        return monitoringService.createAndSaveMonitoring(weight, mental, diet);
     }
 
 }
