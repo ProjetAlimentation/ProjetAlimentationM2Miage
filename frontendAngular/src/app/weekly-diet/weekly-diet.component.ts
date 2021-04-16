@@ -45,6 +45,7 @@ export class WeeklyDietComponent implements OnInit {
   openDialog(dish: Dish): void {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.data = dish;
+    dialogConfig.width = '1200px';
 
     const dialogRef = this.dialog.open(DishPageComponent, dialogConfig);
 
