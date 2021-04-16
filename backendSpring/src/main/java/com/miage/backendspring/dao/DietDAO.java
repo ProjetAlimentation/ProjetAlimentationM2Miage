@@ -2,12 +2,18 @@ package com.miage.backendspring.dao;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.miage.backendspring.entity.ProductCart;
+import com.miage.backendspring.entity.User;
 import com.miage.backendspring.entity.diet.DishNutriwi;
+import com.miage.backendspring.entity.diet.OpenFoodFactsProduct;
 import lombok.RequiredArgsConstructor;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Component;
 
+import javax.persistence.EntityManager;
+import javax.transaction.Transactional;
 import java.io.*;
+import java.util.HashSet;
 import java.util.List;
 
 @Component
@@ -15,6 +21,7 @@ import java.util.List;
 public class DietDAO {
 
     private final ObjectMapper objectMapper;
+    private final EntityManager em;
 
     /**
      * Get weekly diet list from json file and cache it
@@ -59,5 +66,6 @@ public class DietDAO {
         }
         return status;
     }
+
 
 }

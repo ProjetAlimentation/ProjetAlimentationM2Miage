@@ -61,6 +61,9 @@
   <div class="productList">
     <mat-icon>shopping_cart</mat-icon>
     Les produits:
+    <button mat-mini-fab color="warn" class="gen-daily" (click)="openDialog()">
+      <mat-icon>shopping_cart</mat-icon>
+    </button>
     <div *ngFor="let product of openFoodFactsProducts">
       <mat-card class="example-card">
         <img mat-card-image src="{{product.image_front_small_url}}">

@@ -15,6 +15,10 @@ export class BackendService {
 
   }
 
+  addOpenFoodFactsProductsToCard(product: OpenFoodFactsProduct): Observable<OpenFoodFactsProduct> {
+    return this.http.post<OpenFoodFactsProduct>(this.backendUrl + '/addOpenFoodFactsProductsToCart', product, {headers: this.getHeaders()});
+  }
+
   getOpenFoodFactsProducts(productType: string[]): Observable<OpenFoodFactsProduct[]> {
     return this.http.post<OpenFoodFactsProduct[]>(this.backendUrl + '/getOpenFoodFactsProducts', productType, {headers: this.getHeaders()});
   }

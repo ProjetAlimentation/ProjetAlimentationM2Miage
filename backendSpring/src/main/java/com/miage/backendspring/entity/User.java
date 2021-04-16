@@ -20,4 +20,9 @@ public class User {
     private int id;
     private String username;
     private String password;
+
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "productcart_id", referencedColumnName = "id")
+    private ProductCart productCart;
 }

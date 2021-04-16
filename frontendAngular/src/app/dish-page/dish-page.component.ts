@@ -28,4 +28,8 @@ export class DishPageComponent implements OnInit {
       });
   }
 
+
+  addProductsToCart(): void{
+
+  }
 }

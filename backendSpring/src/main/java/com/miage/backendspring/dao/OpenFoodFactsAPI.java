@@ -48,7 +48,7 @@ public class OpenFoodFactsAPI {
                 .queryParam("tag_contains_0", "contains")
                 .queryParam("tag_0", encode)
                 .queryParam("json", "true")
-                .queryParam("fields", "product_name_fr,brands,stores,image_front_small_url,nutrition_grades")
+                .queryParam("fields", "_id,product_name_fr,brands,stores,image_front_small_url,nutrition_grades")
                 .queryParam("page_size", "2")
                 .queryParam("sort_by", "unique_scans_n")
                 .encode()
