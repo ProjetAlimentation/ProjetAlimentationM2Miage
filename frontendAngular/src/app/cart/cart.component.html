@@ -1,0 +1,37 @@
+<div class="productList">
+  <div *ngFor="let product of openFoodFactsProducts">
+    <mat-card class="example-card">
+      <img mat-card-image src="{{product.image_front_small_url}}">
+
+      <mat-card-header>
+        <mat-card-title>{{product.product_name_fr}}</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <p>
+          Producteur: {{product.brands}}
+        </p>
+        <p>
+          Vendeurs: {{product.stores}}
+        </p>
+      </mat-card-content>
+
+      <div class="nutriscore">
+        <img mat-card-image src="assets/img/nutriscore/disabled.png"
+             *ngIf="product.nutrition_grades == null; else enabled">
+
+        <ng-template #enabled>
+          <img mat-card-image src="assets/img/nutriscore/Nutri-score-{{product.nutrition_grades | uppercase }}.svg">
+        </ng-template>
+
+
+        <div class="gen-daily">
+          <button mat-mini-fab color="warn" (click)="deleteProduct(product._id)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
+      </div>
+
+
+    </mat-card>
+  </div>
+</div>

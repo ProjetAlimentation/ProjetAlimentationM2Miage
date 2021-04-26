@@ -5,6 +5,7 @@ import {LoginComponent} from './login/login.component';
 import {AuthGuard} from './login/auth.guard';
 import {NavComponent} from './nav/nav.component';
 import {WeeklyDietComponent} from './weekly-diet/weekly-diet.component';
+import {CartComponent} from './cart/cart.component';
 
 const routes: Routes = [
   {
@@ -16,7 +17,8 @@ const routes: Routes = [
   {
     path: 'dashboard', component: NavComponent, canActivate: [AuthGuard],
     children: [
-      { path: 'weekly-diet', component: WeeklyDietComponent}
+      { path: 'weekly-diet', component: WeeklyDietComponent},
+      { path: 'cart', component: CartComponent}
     ]}
   ];
 

@@ -2,29 +2,29 @@ package com.miage.backendspring.entity.diet;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonRootName;
 import com.miage.backendspring.entity.ProductCart;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import java.util.HashSet;
+import java.util.Set;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@Data
-@Builder
+@Getter
+@Setter
 @Entity(name = "OPEN_FOOD_FACTS_PRODUCTS")
 public class OpenFoodFactsProduct {
 
     @Id
     @JsonProperty("_id")
-    @GeneratedValue
-    private long id;
+    private long _id;
 
     @JsonProperty("product_name_fr")
     private String productName;
@@ -35,7 +35,9 @@ public class OpenFoodFactsProduct {
     @JsonProperty("nutrition_grades")
     private String nutritionGrade;
 
-    @ManyToOne
-    @JoinColumn(name="productcard_id", nullable=false)
-    private ProductCart cart;
+    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "openFoodFactsProducts")
+    @JsonIgnore
+    private Set<ProductCart> productCarts = new HashSet<>();
+
+
 }

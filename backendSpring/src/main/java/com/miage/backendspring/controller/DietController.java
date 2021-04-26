@@ -10,14 +10,11 @@ import com.miage.backendspring.service.ProductCartService;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 @RestController
 @RequiredArgsConstructor
@@ -51,4 +48,17 @@ public class DietController {
     public void addOpenFoodFactsProductsToCart(@RequestBody ProductCart productCart){
         productCartService.addOpenFoodFactsProductsToCart(productCart);
     }
+
+
+    @GetMapping("/getCartElements")
+    public ResponseEntity<Set<OpenFoodFactsProduct>> getCartElements(@RequestParam String userId){
+        return ResponseEntity.ok(productCartService.getCartElements(userId));
+    }
+
+
+    @DeleteMapping("/deleteProduct")
+    public void addOpenFoodFactsProductsToCart(@RequestParam String userId, @RequestParam Long productId){
+        productCartService.deleteProduct(userId, productId);
+    }
+
 }

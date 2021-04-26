@@ -1,6 +1,5 @@
 package com.miage.backendspring.entity.diet;
 
-import com.fasterxml.jackson.annotation.JsonRootName;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

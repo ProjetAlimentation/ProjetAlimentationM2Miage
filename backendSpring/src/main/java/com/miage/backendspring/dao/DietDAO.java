@@ -2,18 +2,15 @@ package com.miage.backendspring.dao;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.miage.backendspring.entity.ProductCart;
-import com.miage.backendspring.entity.User;
 import com.miage.backendspring.entity.diet.DishNutriwi;
-import com.miage.backendspring.entity.diet.OpenFoodFactsProduct;
 import lombok.RequiredArgsConstructor;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.EntityManager;
-import javax.transaction.Transactional;
-import java.io.*;
-import java.util.HashSet;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 
 @Component

@@ -1,4 +1,5 @@
-export interface OpenFoodFactsProduct{
+export interface OpenFoodFactsProduct {
+  _id: number;
   product_name_fr: string;
   brands: string;
   stores: string;

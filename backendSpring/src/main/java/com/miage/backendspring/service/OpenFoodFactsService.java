@@ -4,13 +4,9 @@ import com.miage.backendspring.dao.OpenFoodFactsAPI;
 import com.miage.backendspring.entity.diet.OpenFoodFactsProduct;
 import com.miage.backendspring.entity.diet.OpenFoodFactsResponse;
 import lombok.RequiredArgsConstructor;
-import org.apache.commons.lang3.ArrayUtils;
-import org.apache.commons.lang3.StringUtils;
-import org.apache.commons.lang3.math.NumberUtils;
 import org.springframework.stereotype.Component;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Component

@@ -1,7 +1,6 @@
 package com.miage.backendspring.entity;
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
 
 @AllArgsConstructor
 public enum ProfileEnum {

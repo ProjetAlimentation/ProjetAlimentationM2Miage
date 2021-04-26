@@ -1,15 +1,12 @@
 package com.miage.backendspring.dao;
 
 import com.miage.backendspring.entity.User;
-import com.miage.backendspring.entity.diet.OpenFoodFactsProduct;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import javax.transaction.Transactional;
-import java.util.HashSet;
-import java.util.List;
 
 @Component
 @RequiredArgsConstructor

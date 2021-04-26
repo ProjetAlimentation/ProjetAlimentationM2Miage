@@ -17,12 +17,10 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
     private String username;
     private String password;
 
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "productcart_id", referencedColumnName = "id")
+    @OneToOne(mappedBy = "user", fetch = FetchType.LAZY)
     private ProductCart productCart;
 }
