@@ -20,7 +20,6 @@ import java.util.Set;
 @RequiredArgsConstructor
 public class DietController {
 
-
     private final DietService dietService;
     private final OpenFoodFactsService openFoodFactsService;
     private final ProductCartService productCartService;
