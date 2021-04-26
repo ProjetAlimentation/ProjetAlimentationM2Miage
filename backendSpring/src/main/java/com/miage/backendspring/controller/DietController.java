@@ -1,12 +1,12 @@
 package com.miage.backendspring.controller;
 
 import com.miage.backendspring.entity.ProductCart;
-import com.miage.backendspring.entity.ProfileEnum;
 import com.miage.backendspring.entity.diet.DishNutriwi;
 import com.miage.backendspring.entity.diet.OpenFoodFactsProduct;
 import com.miage.backendspring.service.DietService;
 import com.miage.backendspring.service.OpenFoodFactsService;
 import com.miage.backendspring.service.ProductCartService;
+import com.miage.backendspring.service.profiles.ProfileEnum;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

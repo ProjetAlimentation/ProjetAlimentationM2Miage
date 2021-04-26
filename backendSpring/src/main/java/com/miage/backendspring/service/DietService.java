@@ -1,8 +1,8 @@
 package com.miage.backendspring.service;
 
 import com.miage.backendspring.dao.DietDAO;
-import com.miage.backendspring.entity.ProfileEnum;
 import com.miage.backendspring.entity.diet.DishNutriwi;
+import com.miage.backendspring.service.profiles.ProfileEnum;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 

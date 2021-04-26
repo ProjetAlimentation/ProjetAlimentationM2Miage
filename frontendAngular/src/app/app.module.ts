@@ -28,6 +28,7 @@ import {DemoMaterialModule} from './material-module';
 import {RouterModule} from '@angular/router';
 import { NavComponent } from './nav/nav.component';
 import {WeeklyDietComponent} from './weekly-diet/weekly-diet.component';
+import { MonitoringComponent } from './monitoring/monitoring.component';
 import { DishPageComponent } from './dish-page/dish-page.component';
 import { CartComponent } from './cart/cart.component';
 
@@ -40,7 +41,9 @@ import { CartComponent } from './cart/cart.component';
     NavComponent,
     WeeklyDietComponent,
     DishPageComponent,
-    CartComponent
+    CartComponent,
+    MonitoringComponent,
+    DishPageComponent
   ],
   imports: [
     HttpClientModule,
