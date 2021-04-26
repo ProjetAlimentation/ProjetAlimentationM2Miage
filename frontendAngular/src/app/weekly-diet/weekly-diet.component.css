@@ -15,7 +15,7 @@
 }
 
 :host /deep/ .mat-card-sub{
-  height: 450px;
+  height: 250px;
   margin-bottom: 25px;
 }
 

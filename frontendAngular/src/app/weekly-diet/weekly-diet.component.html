@@ -11,9 +11,6 @@
 
   <div *ngFor="let dish of dishMap | keyvalue">
     <mat-grid-tile>
-
-
-
       <mat-card>
         <mat-card-header>
           <mat-card-title>{{ dish.key.replace('_',' ')}} </mat-card-title>
@@ -27,20 +24,6 @@
           <mat-card-header>
             <mat-card-title>{{dish.value[0].name}}</mat-card-title>
           </mat-card-header>
-
-          <mat-card-content>
-            <p>Ingrédients: </p>
-            <span *ngFor="let ing of dish.value[0].ingredients let i=index" >
-              <div *ngIf="i<5">
-                <li>
-                 {{ing}}
-              </li>
-              </div>
-              <div *ngIf="i==5">
-                ...
-              </div>
-              </span>
-          </mat-card-content>
 
           <mat-card-content>
             <p>Temps de préparation: {{dish.value[0].prepTime}} min</p>
@@ -61,19 +44,6 @@
           </mat-card-header>
 
 
-          <mat-card-content>
-            <p>Ingrédients: </p>
-            <span *ngFor="let ing of dish.value[0].ingredients let i=index" >
-              <div *ngIf="i<5">
-                <li>
-                 {{ing}}
-              </li>
-              </div>
-              <div *ngIf="i==5">
-                ...
-              </div>
-              </span>
-          </mat-card-content>
 
           <mat-card-content>
             <p>Temps de préparation: {{dish.value[1].prepTime}} min</p>

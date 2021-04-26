@@ -2,7 +2,6 @@ package com.miage.backendspring.dao;
 
 import com.miage.backendspring.entity.User;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.EntityManager;
@@ -33,5 +32,6 @@ public class UserDAO {
         long size = (long) query.getSingleResult();
         return size == 1;
     }
+
 
 }

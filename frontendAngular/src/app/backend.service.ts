@@ -3,6 +3,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Dish} from './models/Dish';
 import {OpenFoodFactsProduct} from './models/OpenFoodFactsProduct';
+import {ProductCart} from './models/ProductCart';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +14,20 @@ export class BackendService {
 
   constructor(private http: HttpClient) {
 
+  }
+
+  addOpenFoodFactsProductsToCard(productCart: ProductCart): Observable<any> {
+    // tslint:disable-next-line:max-line-length
+    return this.http.post<OpenFoodFactsProduct>(this.backendUrl + '/addOpenFoodFactsProductsToCart', productCart, {headers: this.getHeaders()});
+  }
+
+  getCartElements(userId: string): Observable<OpenFoodFactsProduct[]> {
+    // @ts-ignore
+    return this.http.get<OpenFoodFactsProduct[]>(this.backendUrl + '/getCartElements?userId=' + userId, {headers: this.getHeaders()});
+  }
+
+  deleteProduct(userId: string, productId: number): Observable<any> {
+    return this.http.delete(this.backendUrl + '/deleteProduct?userId=' + userId + '&productId=' + productId, {headers: this.getHeaders()});
   }
 
   getOpenFoodFactsProducts(productType: string[]): Observable<OpenFoodFactsProduct[]> {

@@ -7,7 +7,10 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Component;
 
-import java.io.*;
+import javax.persistence.EntityManager;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 
 @Component
@@ -15,6 +18,7 @@ import java.util.List;
 public class DietDAO {
 
     private final ObjectMapper objectMapper;
+    private final EntityManager em;
 
     /**
      * Get weekly diet list from json file and cache it
@@ -59,5 +63,6 @@ public class DietDAO {
         }
         return status;
     }
+
 
 }

@@ -1,8 +1,8 @@
 package com.miage.backendspring.service;
 
 import com.miage.backendspring.dao.DietDAO;
-import com.miage.backendspring.service.profiles.ProfileEnum;
 import com.miage.backendspring.entity.diet.DishNutriwi;
+import com.miage.backendspring.service.profiles.ProfileEnum;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -74,6 +74,8 @@ public class DietService {
     public Boolean addDish(DishNutriwi dishNutriwi){
         return dietDAO.addDishToDietList(dishNutriwi);
     }
+
+
 
 
 }

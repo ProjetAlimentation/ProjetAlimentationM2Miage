@@ -1,7 +1,6 @@
 package com.miage.backendspring.controller;
 
 import com.miage.backendspring.service.MonitoringService;
-import com.miage.backendspring.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;

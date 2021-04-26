@@ -9,12 +9,15 @@ import {BackendService} from '../backend.service';
   styleUrls: ['./monitoring.component.css']
 })
 export class MonitoringComponent implements OnInit {
-  monitoringForm: FormGroup;
+  ngOnInit(): void {
+  }
+/*  monitoringForm: FormGroup;
   constructor() {
+
   private formBuilder: FormBuilder, private router: Router, public contactService: BackendService;
   }
 
   ngOnInit(): void {
-  }
+  }*/
 
 }

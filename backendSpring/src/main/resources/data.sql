@@ -1,1 +1,2 @@
-INSERT INTO USERS (id, username, password) values (1,'admin','password');
+INSERT INTO USERS (username, password) values ('admin','password');
+INSERT INTO PRODUCT_CART (id,username) values (1,'admin');

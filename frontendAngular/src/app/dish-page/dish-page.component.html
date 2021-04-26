@@ -61,6 +61,7 @@
   <div class="productList">
     <mat-icon>shopping_cart</mat-icon>
     Les produits:
+
     <div *ngFor="let product of openFoodFactsProducts">
       <mat-card class="example-card">
         <img mat-card-image src="{{product.image_front_small_url}}">
@@ -84,7 +85,15 @@
           <ng-template #enabled>
             <img mat-card-image src="assets/img/nutriscore/Nutri-score-{{product.nutrition_grades | uppercase }}.svg">
           </ng-template>
+
+
+          <div class="gen-daily">
+            <button mat-mini-fab color="warn" (click)="addProductsToCart(product)">
+              <mat-icon>shopping_cart</mat-icon>
+            </button>
+          </div>
         </div>
+
 
       </mat-card>
     </div>
