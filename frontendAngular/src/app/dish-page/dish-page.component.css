@@ -1,0 +1,89 @@
+.mat-card-image{
+  width: 100%;
+  margin:unset;
+  height: 100px; /* height of container */
+  object-fit: cover;
+}
+
+:host /deep/  .mat-grid-tile{
+  display: initial;
+  position: inherit;
+  width: auto;
+}
+
+.mat-grid-list{
+  position: unset;
+}
+
+
+.mat-card {
+  width: 150px;
+  float: left;
+  font-size: 0.8em;
+  min-height: 300px;
+  margin: 10px;
+}
+
+.mat-card p{
+
+  font-size: 0.8em;
+
+}
+
+:host /deep/ .mat-card-header-text{
+  margin: unset;
+}
+.mat-card-title{
+  font-size: 1em;
+
+}
+.productList{
+}
+
+.nutriscore > .mat-card-image{
+  width: 50%;
+  height: 100%;
+  display: table;
+  margin: 0 auto;
+}
+
+.nutriscore {
+  position: absolute;
+  bottom: 0
+}
+
+
+.ing-prep > div {
+  flex: 50%;
+}
+
+.ing-prep {
+  display: flex;
+  margin: 10px;
+}
+
+
+.dish-details > div{
+  flex: 25%;
+
+}
+
+.dish-details{
+  display: flex;
+  margin: 10px;
+  margin-top: 60px;
+}
+
+.dish-image img {
+  height: 300px;
+}
+
+hr.style-two {
+  border: 0;
+  height: 1px;
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+}
+
+.mat-icon{
+  font-size: 1.2em;
+}

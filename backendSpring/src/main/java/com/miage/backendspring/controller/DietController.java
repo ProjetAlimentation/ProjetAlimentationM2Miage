@@ -1,7 +1,6 @@
 package com.miage.backendspring.controller;
 
-import com.miage.backendspring.dao.OpenFoodFactsAPI;
-import com.miage.backendspring.entity.ProfileEnum;
+import com.miage.backendspring.service.profiles.ProfileEnum;
 import com.miage.backendspring.entity.diet.DishNutriwi;
 import com.miage.backendspring.entity.diet.OpenFoodFactsProduct;
 import com.miage.backendspring.service.DietService;
@@ -42,16 +41,8 @@ public class DietController {
     }
 
 
-    @GetMapping("/getOpenFoodFactsProducts")
-    public ResponseEntity<List<OpenFoodFactsProduct>> getOpenFoodFactsProducts(@RequestParam(value = "productType")
-                                                                           String productType){
-        String queryStr = null;
-        try {
-             queryStr = URLDecoder.decode(productType, "UTF-8");
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        }
-
-        return ResponseEntity.ok(openFoodFactsService.getOpenFoodFactsResponse(queryStr).getProducts());
+    @PostMapping("/getOpenFoodFactsProducts")
+    public ResponseEntity<List<OpenFoodFactsProduct>> getOpenFoodFactsProducts(@RequestBody List<String> productTypeList){
+        return ResponseEntity.ok(openFoodFactsService.getOpenFoodFactsResponse(productTypeList));
     }
 }

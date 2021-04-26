@@ -5,6 +5,7 @@ import {LoginComponent} from './login/login.component';
 import {AuthGuard} from './login/auth.guard';
 import {NavComponent} from './nav/nav.component';
 import {WeeklyDietComponent} from './weekly-diet/weekly-diet.component';
+import {HomePageComponent} from "./home-page/home-page.component";
 
 const routes: Routes = [
   {
@@ -17,7 +18,10 @@ const routes: Routes = [
     path: 'dashboard', component: NavComponent, canActivate: [AuthGuard],
     children: [
       { path: 'weekly-diet', component: WeeklyDietComponent}
-    ]}
+    ]},
+  {
+    path: 'home-page', component: HomePageComponent
+  }
   ];
 
 @NgModule({

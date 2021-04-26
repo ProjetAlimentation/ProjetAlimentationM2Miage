@@ -3,4 +3,5 @@ export interface OpenFoodFactsProduct{
   brands: string;
   stores: string;
   image_front_small_url: string;
+  nutrition_grades: string;
 }

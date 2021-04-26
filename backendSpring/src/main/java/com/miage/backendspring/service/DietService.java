@@ -1,10 +1,8 @@
 package com.miage.backendspring.service;
 
 import com.miage.backendspring.dao.DietDAO;
-import com.miage.backendspring.dao.OpenFoodFactsAPI;
-import com.miage.backendspring.entity.ProfileEnum;
+import com.miage.backendspring.service.profiles.ProfileEnum;
 import com.miage.backendspring.entity.diet.DishNutriwi;
-import com.miage.backendspring.entity.diet.OpenFoodFactsProduct;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -53,7 +51,7 @@ public class DietService {
                     String strFilter = str;
 
                     if(str.contains(",")){
-                        strFilter = str.substring(0, str.indexOf(","));
+                        strFilter = ²);
                     }
 
                     List<OpenFoodFactsProduct> products = openFoodFactsAPI.getOpenFoodFactsProducts(strFilter).getProducts();

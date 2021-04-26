@@ -1,17 +1,101 @@
-{{dish.name}}
+<p>{{dish.name}}</p>
 <mat-dialog-content class="mat-typography">
-  <p *ngFor="let product of openFoodFactsProducts">
-   ff {{product.product_name_fr}}
-  </p>
-  <h3>Develop across all platforms</h3>
-  <p>Learn one way to build applications with Angular and reuse your code and abilities to build
-    apps for any deployment target. For web, mobile web, native mobile and native desktop.</p>
+
+
+  <div class="dish-image">
+    <img mat-card-image src="{{'assets/' + dish.imageSrc}}">
+
+  </div>
+
+
+  <div class="ing-prep">
+    <div>
+      Ingrédients:
+      <li *ngFor="let ingredient of dish.ingredients">
+        {{ingredient}}
+      </li>
+
+    </div>
+
+    <div>
+      Préparation:
+      <li *ngFor="let prep of dish.preparationSteps">
+        {{prep}}
+      </li>
+    </div>
+  </div>
+
+
+  <hr class="style-two">
+
+  <div class = "dish-details">
+    <div>
+      <mat-icon>access_time</mat-icon> Temps de préparation:
+      {{dish.prepTime}}
+    </div>
+
+    <div>
+      <mat-icon>group</mat-icon>
+      Portions: {{dish.portion}}
+    </div>
+
+    <div>
+      <mat-icon>no_meals</mat-icon>
+      Profiles:
+      <li *ngFor="let profile of dish.profile">
+        {{profile}}
+      </li>
+    </div>
+
+    <div>
+      <mat-icon>checklist</mat-icon>
+      Nutrition:
+      <li *ngFor="let nutrition of dish.nutrition; let index = index">
+        {{listNutrition[index]}}: {{nutrition}}
+      </li>
+    </div>
+  </div>
+
+  <hr class="style-two">
+
+  <div class="productList">
+    <mat-icon>shopping_cart</mat-icon>
+    Les produits:
+    <div *ngFor="let product of openFoodFactsProducts">
+      <mat-card class="example-card">
+        <img mat-card-image src="{{product.image_front_small_url}}">
+
+        <mat-card-header>
+          <mat-card-title>{{product.product_name_fr}}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <p>
+            Producteur: {{product.brands}}
+          </p>
+          <p>
+            Vendeurs: {{product.stores}}
+          </p>
+        </mat-card-content>
+
+        <div class="nutriscore">
+          <img mat-card-image src="assets/img/nutriscore/disabled.png"
+               *ngIf="product.nutrition_grades == null; else enabled">
+
+          <ng-template #enabled>
+            <img mat-card-image src="assets/img/nutriscore/Nutri-score-{{product.nutrition_grades | uppercase }}.svg">
+          </ng-template>
+        </div>
+
+      </mat-card>
+    </div>
+  </div>
 
 
 </mat-dialog-content>
+
+
 <mat-dialog-actions align="end">
-  <button mat-button mat-dialog-close>Cancel</button>
-  <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Install</button>
+  <button mat-button mat-dialog-close>Fermer</button>
 </mat-dialog-actions>
 
 

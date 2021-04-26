@@ -15,8 +15,8 @@ export class BackendService {
 
   }
 
-  getOpenFoodFactsProducts(productType: string): Observable<OpenFoodFactsProduct[]> {
-    return this.http.get<OpenFoodFactsProduct[]>(this.backendUrl + '/getOpenFoodFactsProducts?productType=' + encodeURIComponent(productType), {headers: this.getHeaders()});
+  getOpenFoodFactsProducts(productType: string[]): Observable<OpenFoodFactsProduct[]> {
+    return this.http.post<OpenFoodFactsProduct[]>(this.backendUrl + '/getOpenFoodFactsProducts', productType, {headers: this.getHeaders()});
   }
 
   getDishList(profile: string): Observable<Map<string, Dish[]>> {
