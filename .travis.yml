@@ -1,3 +1,10 @@
 language: java
 before_script: cd backendSpring/
 script: mvn clean verify
+
+deploy:
+  provider: azure_web_apps
+  username: dieticourse-backend\$dieticourse-backend
+  password: F8nxxXgzNqAxyhT6Hh5KXmRZqsgdoeYsoDb59th2tKvivTnJurYf8xKCczjo
+  site: dieticourse-backend
+  edge: true # opt in to dpl v2
