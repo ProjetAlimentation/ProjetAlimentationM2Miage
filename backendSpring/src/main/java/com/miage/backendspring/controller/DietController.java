@@ -57,7 +57,7 @@ public class DietController {
 
 
     @DeleteMapping("/deleteProduct")
-    public void addOpenFoodFactsProductsToCart(@RequestParam String userId, @RequestParam Long productId){
+    public void deleteProduct(@RequestParam String userId, @RequestParam Long productId){
         productCartService.deleteProduct(userId, productId);
     }
 

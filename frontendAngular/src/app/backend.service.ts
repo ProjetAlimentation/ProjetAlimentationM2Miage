@@ -10,7 +10,6 @@ import {ProductCart} from './models/ProductCart';
 })
 export class BackendService {
 
-
    backendUrl = 'http://localhost:8080';
   // backendUrl = 'https://https://dieticourse-backend.azurewebsites.net/';
 
