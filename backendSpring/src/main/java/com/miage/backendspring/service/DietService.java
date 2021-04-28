@@ -1,6 +1,12 @@
 package com.miage.backendspring.service;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.ObjectWriter;
 import com.miage.backendspring.dao.DietDAO;
+import com.miage.backendspring.dao.UserRepository;
+import com.miage.backendspring.entity.ProductCart;
+import com.miage.backendspring.entity.User;
 import com.miage.backendspring.entity.diet.DishNutriwi;
 import com.miage.backendspring.service.profiles.ProfileEnum;
 import lombok.RequiredArgsConstructor;
@@ -14,6 +20,7 @@ import java.util.stream.Collectors;
 public class DietService {
 
     private final DietDAO dietDAO;
+    private final UserRepository userRepository;
     //private final OpenFoodFactsAPI openFoodFactsAPI;
 
     /**
@@ -21,7 +28,7 @@ public class DietService {
      * @param profileEnum
      * @return
      */
-    public Map<String, List<DishNutriwi>> getWeeklyDiet(ProfileEnum profileEnum){
+    public String getWeeklyDiet(ProfileEnum profileEnum){
 
         Map<String,List<DishNutriwi>> weeklyDiet = new LinkedHashMap<>();
 
@@ -62,15 +69,52 @@ public class DietService {
                 }
             }
         }*/
-        return weeklyDiet;
+
+
+        ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
+
+        String str = null;
+        try {
+            str = ow.writeValueAsString(weeklyDiet);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+
+        return str;
     }
 
 
-    /**
-     * Add a dish to list
-     * @param dishNutriwi
-     * @return
-     */
+    public String getWeeklyDiet(String username, boolean regenerate, ProfileEnum profileEnum){
+
+        User admin = userRepository.getOne(username);
+        ProductCart productCart = admin.getProductCart();
+
+        if(regenerate){
+            String weeklyDiet = getWeeklyDiet(profileEnum);
+            productCart.setWeeklyDiet(weeklyDiet);
+            userRepository.save(admin);
+            return weeklyDiet;
+        }
+
+        if(productCart.getWeeklyDiet() != null){
+            return productCart.getWeeklyDiet();
+        }
+
+        String weeklyDiet = getWeeklyDiet(profileEnum);
+        productCart.setWeeklyDiet(weeklyDiet);
+        userRepository.save(admin);
+
+        return weeklyDiet;
+
+    }
+
+
+
+        /**
+         * Add a dish to list
+         * @param dishNutriwi
+         * @return
+         */
     public Boolean addDish(DishNutriwi dishNutriwi){
         return dietDAO.addDishToDietList(dishNutriwi);
     }

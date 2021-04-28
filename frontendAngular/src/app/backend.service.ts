@@ -35,12 +35,12 @@ export class BackendService {
     return this.http.post<OpenFoodFactsProduct[]>(this.backendUrl + '/getOpenFoodFactsProducts', productType, {headers: this.getHeaders()});
   }
 
-  getDishList(profile: string): Observable<Map<string, Dish[]>> {
-    return this.http.get<Map<string, Dish[]>>(this.backendUrl + '/getWeeklyDietByProfile?profile=' + profile, {headers: this.getHeaders()});
+  getDishList(username: string, refresh: boolean, profile: string): Observable<Map<string, Dish[]>> {
+    return this.http.get<Map<string, Dish[]>>(this.backendUrl + '/getWeeklyDietByProfile?username=' + username + '&refresh=' + refresh + '&profile' + profile, {headers: this.getHeaders()});
   }
 
-  getDishListAll(): Observable<Map<string, Dish[]>> {
-    return this.http.get<Map<string, Dish[]>>(this.backendUrl + '/getWeeklyDietByProfile', {headers: this.getHeaders()});
+  getDishListAll(username: string, refresh: boolean): Observable<Map<string, Dish[]>> {
+    return this.http.get<Map<string, Dish[]>>(this.backendUrl + '/getWeeklyDietByProfile?username=' + username + '&refresh=' + refresh, {headers: this.getHeaders()});
   }
 
   test(): Observable<string> {
