@@ -9,15 +9,19 @@ import {BackendService} from '../backend.service';
   styleUrls: ['./monitoring.component.css']
 })
 export class MonitoringComponent implements OnInit {
-  ngOnInit(): void {
-  }
-/*  monitoringForm: FormGroup;
-  constructor() {
 
-  private formBuilder: FormBuilder, private router: Router, public contactService: BackendService;
+  monitoringForm: FormGroup;
+  constructor( private formBuilder: FormBuilder, private router: Router, public contactService: BackendService)
+  {
   }
 
   ngOnInit(): void {
-  }*/
+
+  }
+  entrerMonitoring(etat, diet): void
+  {
+  console.log(etat);
+  console.log(diet) ;
+  }
 
 }

@@ -8,23 +8,17 @@
 
   <mat-form-field appearance="fill">
     <mat-label>Notez votre état mental </mat-label>
-    <mat-select>
-      <mat-option value="option1">1</mat-option>
-      <mat-option value="option2">2</mat-option>
-      <mat-option value="option3">3</mat-option>
-      <mat-option value="option4">4</mat-option>
-      <mat-option value="option5">5</mat-option>
-    </mat-select>
+    <input matInput type = text #etat >
   </mat-form-field>
 
   <mat-form-field appearance="fill">
     <mat-label>Notez la  diet </mat-label>
-    <mat-select>
-      <mat-option value="note1">1</mat-option>
-      <mat-option value="note2">2</mat-option>
-      <mat-option value="note3">3</mat-option>
-      <mat-option value="note4">4</mat-option>
-      <mat-option value="note5">5</mat-option>
-    </mat-select>
+    <input matInput type = text #diet >
+
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+  <button mat-button (click)=" entrerMonitoring(etat.value, diet.value)">
+    Valider
+  </button>
   </mat-form-field>
 </div>
