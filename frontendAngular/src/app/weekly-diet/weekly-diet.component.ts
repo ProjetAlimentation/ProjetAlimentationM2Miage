@@ -28,14 +28,18 @@ export class WeeklyDietComponent implements OnInit {
   constructor(private backendService: BackendService, private dialog: MatDialog) {}
 
   ngOnInit(): void {
-    this.backendService.getDishListAll().subscribe(dishMap => {
+    const username = localStorage.getItem('token');
+
+    this.backendService.getDishListAll(username, false).subscribe(dishMap => {
       this.dishMap = dishMap;
     });
   }
 
 
   updateDietList(profile): void{
-    this.backendService.getDishList(profile).subscribe(dishMap => {
+    const username = localStorage.getItem('token');
+
+    this.backendService.getDishList(username, true, profile).subscribe(dishMap => {
       this.dishMap = dishMap;
       console.log(dishMap);
 

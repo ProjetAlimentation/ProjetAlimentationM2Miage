@@ -21,6 +21,9 @@ public class ProductCart {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    @Column(length = 30000)
+    private String weeklyDiet;
+
 
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(name = "productcart_has_product",

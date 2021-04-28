@@ -13,7 +13,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 
 @RestController
@@ -26,9 +25,11 @@ public class DietController {
 
     @Operation(summary = "Get weekly diet by profile")
     @GetMapping("/getWeeklyDietByProfile")
-    public ResponseEntity<Map<String, List<DishNutriwi>>> getWeeklyDietByProfile(@RequestParam(value = "profile", required = false)
-                                                                                             ProfileEnum profileEnum){
-        return ResponseEntity.ok(dietService.getWeeklyDiet(profileEnum));
+    public ResponseEntity<String> getWeeklyDietByProfile(@RequestParam(value = "profile", required = false)
+                                                                                             ProfileEnum profileEnum,
+                                                         @RequestParam String username,
+                                                         @RequestParam boolean refresh){
+        return ResponseEntity.ok(dietService.getWeeklyDiet(username, refresh, profileEnum));
     }
 
     @Operation(summary = "Save a diet")

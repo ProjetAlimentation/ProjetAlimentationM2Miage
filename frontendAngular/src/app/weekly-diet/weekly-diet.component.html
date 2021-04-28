@@ -1,10 +1,13 @@
 <mat-form-field appearance="fill">
-  <mat-label>Régime alimentaire</mat-label>
+  <mat-label>Regénerer la liste</mat-label>
   <mat-select (selectionChange)="updateDietList($event.value)">
     <mat-option *ngFor="let profile of profiles" [value]="profile.value">
       {{profile.viewValue}}
     </mat-option>
   </mat-select>
+
+
+
 </mat-form-field>
 
 <mat-grid-list cols="7" >
