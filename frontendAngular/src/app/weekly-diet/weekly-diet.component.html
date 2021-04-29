@@ -21,7 +21,7 @@
 
         <mat-card-subtitle>Déjeuner</mat-card-subtitle>
 
-        <mat-card class="mat-card-sub"  (click)="openDialog(dish.value[0])">
+        <mat-card class="mat-card-sub"  (click)="openDialog(dish.value[0], dish.key, 0)">
           <img mat-card-image src="{{'assets/' + dish.value[0].imageSrc}}">
 
           <mat-card-header>
@@ -39,7 +39,7 @@
         <mat-card-subtitle>Dîner</mat-card-subtitle>
 
 
-        <mat-card class="mat-card-sub"  (click)="openDialog(dish.value[1])">
+        <mat-card class="mat-card-sub"  (click)="openDialog(dish.value[1], dish.key, 1)">
           <img mat-card-image src="{{'assets/' + dish.value[1].imageSrc}}">
 
           <mat-card-header>

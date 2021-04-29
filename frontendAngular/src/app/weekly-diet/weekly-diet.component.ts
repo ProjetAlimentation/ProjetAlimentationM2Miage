@@ -28,7 +28,7 @@ export class WeeklyDietComponent implements OnInit {
   constructor(private backendService: BackendService, private dialog: MatDialog) {}
 
   ngOnInit(): void {
-    const username = localStorage.getItem("token");
+    const username = localStorage.getItem('token');
 
     this.backendService.getDishListAll(username, false).subscribe((dishMap) => {
       this.dishMap = dishMap;
@@ -42,20 +42,48 @@ export class WeeklyDietComponent implements OnInit {
     this.backendService.getDishList(username, true, profile).subscribe((dishMap) => {
       this.dishMap = dishMap;
       console.log(dishMap);
-
     });
   }
 
-  openDialog(dish: Dish): void {
+  updateDishInDietList(dishKey, dishIndex, profile?): void{
+    const username = localStorage.getItem('token');
+
+    this.backendService.getRegeneratedDish(username, dishKey, dishIndex, profile).subscribe( dishMap => {
+      this.dishMap = dishMap;
+      console.log(dishMap);
+    });
+  }
+
+  /* key et isFirst à retirer et à déplacer dans une autre méthode + reporter les modifs sur l'html*/
+  openDialog(dish: Dish, dishKey: string, dishIndex: number): void {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.data = dish;
     dialogConfig.width = '1200px';
 
     const dialogRef = this.dialog.open(DishPageComponent, dialogConfig);
-
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
     });
+    // cette deuxième partie est à reporter dans une autre méthode qui sera appeler par un bouton sur un dish
+    // le back est OK mais est à optimiser
+    // let profileValue;
+
+    // tslint:disable-next-line:forin
+    /*for (const index in this.profiles) {
+      if (this.profiles[index].viewValue === dish.profile.toString()) {
+          profileValue = this.profiles[index].value;
+          break;
+      }
+    } */
+
+    /*if (profileValue === undefined){
+      this.updateDishInDietList(dishKey, dishIndex);
+    }else{
+      this.updateDishInDietList(dishKey, dishIndex, profileValue);
+    }
+
+    console.log(`key: ${dishKey}`);
+    console.log(`valeur index: ${dishIndex}`); */
   }
 
 }

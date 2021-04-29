@@ -28,7 +28,7 @@ public class BackendspringApplication {
 
     @PostConstruct
     public void init() {
-        dietDAO.getDietList();
+        dietDAO.getDietDishList();
     }
 
     @Bean

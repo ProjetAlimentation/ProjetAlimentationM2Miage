@@ -21,11 +21,11 @@ public class DietDAO {
     private final EntityManager em;
 
     /**
-     * Get weekly diet list from json file and cache it
+     * Get diet dish list from json file and cache it
      * @return
      */
     @Cacheable("dietDB")
-    public List<DishNutriwi> getDietList() {
+    public List<DishNutriwi> getDietDishList() {
         TypeReference<List<DishNutriwi>> typeReference = new TypeReference<List<DishNutriwi>>() {
         };
         InputStream inputStream = TypeReference.class.getResourceAsStream("/nutriwiClean.json");
@@ -43,12 +43,12 @@ public class DietDAO {
 
 
     /**
-     * Add a dish to the list and write it in the file
+     * Add a dish to the diet dish list and write it in the json file
      * @param dishNutriwi
      * @return
      */
     public Boolean addDishToDietList(DishNutriwi dishNutriwi) {
-        List<DishNutriwi> dietList = this.getDietList();
+        List<DishNutriwi> dietList = this.getDietDishList();
         dietList.add(dishNutriwi);
 
         boolean status = false;
