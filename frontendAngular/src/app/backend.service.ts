@@ -49,7 +49,7 @@ export class BackendService {
   getRegeneratedDish(username: string, dishKey: string, dishIndex: number, profile?: string): Observable<Map<string, Dish[]>> {
     // tslint:disable-next-line:max-line-length
     const profileLink =  profile === undefined ? '' : '&profile=' + profile;
-    return this.http.get<Map<string, Dish[]>>(this.backendUrl + '/getRegenerateDishByProfile?username=' + username + '&dishKey=' + dishKey + '&dishIndex=' + dishIndex + profileLink, {headers: this.getHeaders()});
+    return this.http.get<Map<string, Dish[]>>(this.backendUrl + "/getRegenerateDishByProfile?username=" + username + '&dishKey=' + dishKey + '&dishIndex=' + dishIndex + profileLink, {headers: this.getHeaders()});
   }
 
   test(): Observable<string> {
