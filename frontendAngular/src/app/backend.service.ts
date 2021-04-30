@@ -64,6 +64,10 @@ export class BackendService {
     return this.http.post<void>(this.backendUrl + '/updateLogin?username=' + login + '&password=' + password, {headers: this.getHeaders()});
   }
 
+  createMonitoring(weight: number, mental: number, diet: number ): Observable<void> {
+    return this.http.post<void>(this.backendUrl + '/addMonitoring=' + weight + '&mental=' + mental + '&diet=' + diet, {headers: this.getHeaders()});
+  }
+
   getHeaders(): HttpHeaders {
     const headers = new HttpHeaders();
     headers.append('Access-Control-Allow-Origin', '*');
