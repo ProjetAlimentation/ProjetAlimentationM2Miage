@@ -37,7 +37,7 @@ export class BackendService {
 
   getDishList(username: string, refresh: boolean, profile: string): Observable<Map<string, Dish[]>> {
     console.log('profileRand ' + profile);
-    return this.http.get<Map<string, Dish[]>>(this.backendUrl + '/getWeeklyDietByProfile?username=' + username + '&refresh=' + refresh + '&profile=' + profile, {headers: this.getHeaders()});
+    return this.http.get<Map<string, Dish[]>>(this.backendUrl + "/getWeeklyDietByProfile?username=" + username + '&refresh=' + refresh + '&profile=' + profile, {headers: this.getHeaders()});
   }
 
   getDishListAll(username: string, refresh: boolean): Observable<Map<string, Dish[]>> {
