@@ -55,7 +55,8 @@
 }
 
 
-.mat-card-sub:hover {
+.mat-card-sub,.regen-button:hover {
   background-color: #e9e9e9;
 }
+
 
