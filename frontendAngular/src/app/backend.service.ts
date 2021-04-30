@@ -4,14 +4,14 @@ import {Observable} from 'rxjs';
 import {Dish} from './models/Dish';
 import {OpenFoodFactsProduct} from './models/OpenFoodFactsProduct';
 import {ProductCart} from './models/ProductCart';
+import {environment} from '../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BackendService {
 
-   // backendUrl = 'http://localhost:8080';
-   backendUrl = 'https://dieticourse-backend.azurewebsites.net/';
+   backendUrl = environment.API_URL;
 
   constructor(private http: HttpClient) {
 
