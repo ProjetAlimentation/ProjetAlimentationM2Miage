@@ -50,7 +50,7 @@ export class WeeklyDietComponent implements OnInit {
   updateDishInDietList(dishKey, dishIndex, profile?): void{
     const username = localStorage.getItem('token');
 
-    console.log('sds ' + profile);
+    console.log("sds " + profile);
     this.backendService.getRegeneratedDish(username, dishKey, dishIndex, profile).subscribe( dishMap => {
       this.dishMap = dishMap;
       console.log(dishMap);
