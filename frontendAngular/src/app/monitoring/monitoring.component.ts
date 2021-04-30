@@ -18,10 +18,12 @@ export class MonitoringComponent implements OnInit {
   ngOnInit(): void {
 
   }
-  entrerMonitoring(etat, diet): void
+  entrerMonitoring(weight, etat, diet): void
   {
-  console.log(etat);
-  console.log(diet) ;
+
+     console.log(weight) ;
+     console.log(etat);
+     console.log(diet) ;
   }
 
 }
