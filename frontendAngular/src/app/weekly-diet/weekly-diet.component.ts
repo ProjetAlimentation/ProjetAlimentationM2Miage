@@ -17,6 +17,7 @@ export class WeeklyDietComponent implements OnInit {
 
   dishList: Dish[] = [];
   dishMap: Map<string, Dish[]> = new Map<string, Dish[]>();
+  selectedProfile: string;
 
   profiles: ProfileInterface[] = [
     {value: 'VEGETALIEN', viewValue: 'Végétalien'},
@@ -45,17 +46,19 @@ export class WeeklyDietComponent implements OnInit {
     });
   }
 
+
   updateDishInDietList(dishKey, dishIndex, profile?): void{
     const username = localStorage.getItem('token');
 
+    console.log('sds ' + profile);
     this.backendService.getRegeneratedDish(username, dishKey, dishIndex, profile).subscribe( dishMap => {
       this.dishMap = dishMap;
       console.log(dishMap);
     });
   }
 
-  /* key et isFirst à retirer et à déplacer dans une autre méthode + reporter les modifs sur l'html*/
-  openDialog(dish: Dish, dishKey: string, dishIndex: number): void {
+
+  openDialog(dish: Dish): void {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.data = dish;
     dialogConfig.width = '1200px';
@@ -64,26 +67,7 @@ export class WeeklyDietComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
     });
-    // cette deuxième partie est à reporter dans une autre méthode qui sera appeler par un bouton sur un dish
-    // le back est OK mais est à optimiser
-    // let profileValue;
 
-    // tslint:disable-next-line:forin
-    /*for (const index in this.profiles) {
-      if (this.profiles[index].viewValue === dish.profile.toString()) {
-          profileValue = this.profiles[index].value;
-          break;
-      }
-    } */
-
-    /*if (profileValue === undefined){
-      this.updateDishInDietList(dishKey, dishIndex);
-    }else{
-      this.updateDishInDietList(dishKey, dishIndex, profileValue);
-    }
-
-    console.log(`key: ${dishKey}`);
-    console.log(`valeur index: ${dishIndex}`); */
   }
 
 }

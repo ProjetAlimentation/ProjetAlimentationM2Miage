@@ -36,7 +36,8 @@ export class BackendService {
   }
 
   getDishList(username: string, refresh: boolean, profile: string): Observable<Map<string, Dish[]>> {
-    return this.http.get<Map<string, Dish[]>>(this.backendUrl + '/getWeeklyDietByProfile?username=' + username + '&refresh=' + refresh + '&profile' + profile, {headers: this.getHeaders()});
+    console.log('profileRand ' + profile);
+    return this.http.get<Map<string, Dish[]>>(this.backendUrl + '/getWeeklyDietByProfile?username=' + username + '&refresh=' + refresh + '&profile=' + profile, {headers: this.getHeaders()});
   }
 
   getDishListAll(username: string, refresh: boolean): Observable<Map<string, Dish[]>> {
@@ -47,7 +48,8 @@ export class BackendService {
   /* utilisé pour la regénération d'un plat dans la dietlist */
   getRegeneratedDish(username: string, dishKey: string, dishIndex: number, profile?: string): Observable<Map<string, Dish[]>> {
     // tslint:disable-next-line:max-line-length
-    return this.http.get<Map<string, Dish[]>>(this.backendUrl + '/getRegenerateDishByProfile?username=' + username + '&dishKey=' + dishKey + '&dishIndex=' + dishIndex + '&profile=' + profile, {headers: this.getHeaders()});
+    const profileLink =  profile === undefined ? '' : '&profile=' + profile;
+    return this.http.get<Map<string, Dish[]>>(this.backendUrl + '/getRegenerateDishByProfile?username=' + username + '&dishKey=' + dishKey + '&dishIndex=' + dishIndex + profileLink, {headers: this.getHeaders()});
   }
 
   test(): Observable<string> {

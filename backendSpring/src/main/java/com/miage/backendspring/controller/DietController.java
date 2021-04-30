@@ -66,8 +66,8 @@ public class DietController {
     public ResponseEntity<String> getRegenerateDishByProfile(@RequestParam String username, @RequestParam String dishKey,
                                                              @RequestParam int dishIndex,
                                                              @RequestParam(required = false)
-                                                                         ProfileEnum profileEnum ){
-        return ResponseEntity.ok(dietService.getRegenerateDishByProfile(username, dishKey, dishIndex, profileEnum));
+                                                                         ProfileEnum profile ){
+        return ResponseEntity.ok(dietService.getRegenerateDishByProfile(username, dishKey, dishIndex, profile));
     }
 
 
