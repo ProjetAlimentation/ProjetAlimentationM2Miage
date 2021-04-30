@@ -1,4 +1,4 @@
-# Projet Alimentation M2Miage
+# Plateforme DietiCourse
 
 ### Technologies
 <ol>
