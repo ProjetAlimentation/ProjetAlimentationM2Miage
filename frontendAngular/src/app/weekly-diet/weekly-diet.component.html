@@ -25,51 +25,47 @@
         <mat-card-subtitle>Déjeuner</mat-card-subtitle>
 
         <div>
-          <button mat-mini-fab color="warn" (click)="updateDishInDietList( dish.key, 0, selectedProfile)">
-            <mat-icon>delete</mat-icon>
+          <button mat-icon-button color="primary" (click)="updateDishInDietList( dish.key, 0, selectedProfile)">
+            <mat-icon>autorenew</mat-icon>
           </button>
 
-        <mat-card class="mat-card-sub"  (click)="openDialog(dish.value[0])">
+          <mat-card class="mat-card-sub"  (click)="openDialog(dish.value[0])">
+            <img mat-card-image src="{{'assets/' + dish.value[0].imageSrc}}">
 
-          <img mat-card-image src="{{'assets/' + dish.value[0].imageSrc}}">
+            <mat-card-header>
+              <mat-card-title>{{dish.value[0].name}}</mat-card-title>
+            </mat-card-header>
 
-          <mat-card-header>
-            <mat-card-title>{{dish.value[0].name}}</mat-card-title>
-          </mat-card-header>
-
-          <mat-card-content>
-            <p>Temps de préparation: {{dish.value[0].prepTime}} min</p>
-              <span *ngFor="let profile of dish.value[0].profile let isLast=last" >
-                {{profile}}{{isLast ? '' : ', '}}
-              </span>
-          </mat-card-content>
-        </mat-card>
+            <mat-card-content>
+              <p>Temps de préparation: {{dish.value[0].prepTime}} min</p>
+                <span *ngFor="let profile of dish.value[0].profile let isLast=last" >
+                  {{profile}}{{isLast ? '' : ', '}}
+                </span>
+            </mat-card-content>
+          </mat-card>
         </div>
 
         <mat-card-subtitle>Dîner</mat-card-subtitle>
+          <div>
+            <button mat-icon-button color="primary" (click)="updateDishInDietList( dish.key, 1, selectedProfile)">
+              <mat-icon>autorenew</mat-icon>
+            </button>
 
+            <mat-card class="mat-card-sub"  (click)="openDialog(dish.value[1])">
+              <img mat-card-image src="{{'assets/' + dish.value[1].imageSrc}}">
 
-        <mat-card class="mat-card-sub"  (click)="openDialog(dish.value[1])">
+              <mat-card-header>
+                <mat-card-title>{{dish.value[1].name}}</mat-card-title>
+              </mat-card-header>
 
-          <button mat-mini-fab color="warn" (click)="updateDishInDietList( dish.key, 1, selectedProfile)">
-            <mat-icon>delete</mat-icon>
-          </button>
-          <img mat-card-image src="{{'assets/' + dish.value[1].imageSrc}}">
-
-          <mat-card-header>
-            <mat-card-title>{{dish.value[1].name}}</mat-card-title>
-          </mat-card-header>
-
-
-
-          <mat-card-content>
-            <p>Temps de préparation: {{dish.value[1].prepTime}} min</p>
-            <span *ngFor="let profile of dish.value[1].profile let isLast=last" >
-                {{profile}}{{isLast ? '' : ', '}}
-              </span>
-          </mat-card-content>
-        </mat-card>
-
+              <mat-card-content>
+                <p>Temps de préparation: {{dish.value[1].prepTime}} min</p>
+                <span *ngFor="let profile of dish.value[1].profile let isLast=last" >
+                    {{profile}}{{isLast ? '' : ', '}}
+                  </span>
+              </mat-card-content>
+            </mat-card>
+        </div>
 
       </mat-card>
     </mat-grid-tile>
