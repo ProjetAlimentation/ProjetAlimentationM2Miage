@@ -24,12 +24,12 @@ Lien pour tester les fonctionnalités backend: https://dieticourse-backend.azure
 
   - Connexion : formulaire de connexion standard (à tester avec admin/password)
   - Menus: La page contenant la diète de l'utilisateur avec 2 repas/jour sur une semaine.
-     <ul> Regénérer une nouvelle recette en cliquant sur l'ic$one regénérer en haut à droite de la photo </ul>
      <ul> Filtrer les recettes en fonction du profil alimentaire (Végétarien - Végétalien - Sans Gluten - Sans lactose) </ul>
      <ul> Afficher le détail d'une recette en cliquant dessus </ul>
      <ul> Afficher les produits OpenFoodFacts correspondant (au mieux) à chacune des recettes </ul>
-     <ul> Ajouter un ou plusieurs produits d'une recette dans le panier de course </ul>
-  - Panier: une page contenant les produits ajoutés à notre panier : possibilier de supprimer un ou plusieurs produits
+     <ul> Regénérer un nouveau repas en cliquant sur l'icône regénérer en haut à gauche de chaque recette </ul>
+     <ul> Ajouter un ou plusieurs produits d'une recette dans le panier de course en cliquant sur le bouton "cadie" du produit </ul>
+  - Panier: une page contenant les produits ajoutés à notre panier : possibilité de supprimer un ou plusieurs produits
 
 #### Fonctionnalités seulement en backend
   - Suivi "Monitoring-controller /addMonitoring" : ajout du poids - note de la diet - note de l'état mental les trois paramètre s'ajoutent à la base de données associé à la date d'ajout afin de pouvoir ensuite mettre en place une courbe de suivi. Le frontEnd de cette fonctionnalité contient encore des bugs (voir ticket #23). 
