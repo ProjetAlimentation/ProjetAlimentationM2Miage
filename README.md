@@ -7,7 +7,7 @@
 <li>Base de données: MySQL et Json</li>  
 <li>Tests: JUnit et Mockito</li>
 <li>Versionning et partgage de code: GitHub</li>
-<li>Intégration continue: Jenkins : accessible au lien http://52.232.47.118:8080/ (connexion avec login/password) </li> 
+<li>Intégration continue: Jenkins : accessible au lien http://52.232.47.118:8080/ (connexion avec admin/password) </li> 
 <li>Suivi des issues : GitHub Boards </li> 
 <li>Analyse du code: Codacy</li>
 <li>Test Coverage : JaCoCo Code Coverage (13% de coverage)</li>
