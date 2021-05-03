@@ -32,9 +32,9 @@ public class DietController {
         return ResponseEntity.ok(dietService.getWeeklyDiet(username, refresh, profileEnum));
     }
 
-    @Operation(summary = "Save a diet")
-    @PostMapping("saveDiet")
-    public ResponseEntity<Boolean> saveDiet(@RequestBody DishNutriwi dishNutriwi){
+    @Operation(summary = "Add a dish")
+    @PostMapping("/addDish")
+    public ResponseEntity<Boolean> addDish(@RequestBody DishNutriwi dishNutriwi){
        return ResponseEntity.ok(dietService.addDish(dishNutriwi));
     }
 
