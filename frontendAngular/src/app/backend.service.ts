@@ -5,6 +5,7 @@ import {Dish} from './models/Dish';
 import {OpenFoodFactsProduct} from './models/OpenFoodFactsProduct';
 import {ProductCart} from './models/ProductCart';
 import {environment} from '../environments/environment';
+import {Monitoring} from './models/Monitoring';
 
 @Injectable({
   providedIn: 'root'
@@ -65,7 +66,11 @@ export class BackendService {
   }
 
   createMonitoring(weight: number, mental: number, diet: number ): Observable<void> {
-    return this.http.post<void>(this.backendUrl + '/addMonitoring=' + weight + '&mental=' + mental + '&diet=' + diet, {headers: this.getHeaders()});
+    return this.http.post<void>(this.backendUrl + '/addMonitoring?weight=' + weight + '&mental=' + mental + '&diet=' + diet, {headers: this.getHeaders()});
+  }
+
+  getMonitoring(): Observable<Monitoring[]> {
+    return this.http.get<Monitoring[]>(this.backendUrl + '/getMonitoring', {headers: this.getHeaders()});
   }
 
   getHeaders(): HttpHeaders {

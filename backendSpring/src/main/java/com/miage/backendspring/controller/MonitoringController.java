@@ -1,11 +1,12 @@
 package com.miage.backendspring.controller;
 
+import com.miage.backendspring.entity.Monitoring;
 import com.miage.backendspring.service.MonitoringService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @CrossOrigin
@@ -14,9 +15,15 @@ public class MonitoringController {
 
     private final MonitoringService monitoringService;
 
-    @GetMapping("/addMonitoring")
+    @PostMapping("/addMonitoring")
     public boolean addMonitoring(@RequestParam("weight") double weight, @RequestParam("mental") int mental, @RequestParam("diet") int diet) {
         return monitoringService.createAndSaveMonitoring(weight, mental, diet);
+    }
+
+
+    @GetMapping("/getMonitoring")
+    public ResponseEntity<List<Monitoring>> getMonitoring(){
+        return ResponseEntity.ok(monitoringService.getMonitoring());
     }
 
 }
