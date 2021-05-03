@@ -1,10 +1,10 @@
 package com.miage.backendspring;
 
 import com.miage.backendspring.dao.DietDAO;
-import com.miage.backendspring.dao.UserRepository;
 import com.miage.backendspring.entity.ProductCart;
 import com.miage.backendspring.entity.User;
 import com.miage.backendspring.entity.diet.DishNutriwi;
+import com.miage.backendspring.repositories.UserRepository;
 import com.miage.backendspring.service.DietService;
 import com.miage.backendspring.service.profiles.ProfileEnum;
 import org.junit.jupiter.api.Assertions;
