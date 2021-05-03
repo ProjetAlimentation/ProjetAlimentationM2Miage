@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @RequiredArgsConstructor
 @Component
@@ -29,6 +30,12 @@ public class MonitoringService {
             System.out.println(e.getMessage());
         }
         return add;
+    }
+
+
+    public List<Monitoring> getMonitoring(){
+        Iterable<Monitoring> all = monitoringRepository.findAll();
+        return (List<Monitoring>) all;
     }
 
 

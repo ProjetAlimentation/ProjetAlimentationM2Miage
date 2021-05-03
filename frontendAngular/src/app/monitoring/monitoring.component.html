@@ -1,24 +1,45 @@
-<div class="example-container">
+<mat-expansion-panel>
+  <mat-expansion-panel-header>
+    <mat-panel-title>
+      Comment vous vous sentez?
+    </mat-panel-title>
+    <mat-panel-description>
+    </mat-panel-description>
+  </mat-expansion-panel-header>
   <div class="form-container">
-    <form  (submit)="entrerMonitoring(weight.value, etat.value, diet.value)">
+    <form [formGroup]="monitoringForm" (submit)="entrerMonitoring()">
       <mat-form-field class="form-field" >
         <mat-label> Entrez votre poids
         </mat-label>
-        <input matInput #weight formControlName="weight" required>
+        <input matInput formControlName="weight" required>
       </mat-form-field>
-        <mat-form-field class="form-field" >
-        <mat-label> Notez la diet qui vous a été proposée
+      <mat-form-field class="form-field" >
+        <mat-label> Notez la diète qui vous a été proposée
         </mat-label>
-        <input matInput #diet formControlName="diet" required>
+        <input matInput formControlName="diet" required>
 
       </mat-form-field>
       <mat-form-field class="form-field" >
-        <mat-label> Notez votre état mental
+        <mat-label> Notez votre niveau de bien-être
         </mat-label>
-        <input matInput #etat formControlName="etat" required>
+        <input matInput formControlName="etat" required>
 
       </mat-form-field>
       <button mat-raised-button color="primary" type="submit">Valider</button>
     </form>
   </div>
+</mat-expansion-panel>
+
+
+
+<div class="chart-wrapper">
+  <canvas baseChart
+          [datasets]="lineChartData"
+          [labels]="lineChartLabels"
+          [options]="lineChartOptions"
+          [colors]="lineChartColors"
+          [legend]="lineChartLegend"
+          [chartType]="lineChartType"
+          [plugins]="lineChartPlugins">
+  </canvas>
 </div>

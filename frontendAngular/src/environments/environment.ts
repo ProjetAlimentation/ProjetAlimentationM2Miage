@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  API_URL: 'https://dieticourse-backend.azurewebsites.net'
+  API_URL: 'http://localhost:8080'
 };
 
 /*

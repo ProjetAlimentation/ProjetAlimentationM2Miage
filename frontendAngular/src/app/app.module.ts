@@ -31,6 +31,7 @@ import {WeeklyDietComponent} from './weekly-diet/weekly-diet.component';
 import { MonitoringComponent } from './monitoring/monitoring.component';
 import { DishPageComponent } from './dish-page/dish-page.component';
 import { CartComponent } from './cart/cart.component';
+import { ChartsModule } from 'ng2-charts';
 
 
 @NgModule({
@@ -70,7 +71,9 @@ import { CartComponent } from './cart/cart.component';
     MatMenuModule,
     MatGridListModule,
     MatTabsModule,
-    RouterModule
+    RouterModule,
+    ChartsModule
+
   ],
   providers: [AuthGuard],
   bootstrap: [AppComponent]
