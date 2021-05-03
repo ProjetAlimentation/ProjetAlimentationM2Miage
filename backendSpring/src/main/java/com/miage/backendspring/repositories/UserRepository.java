@@ -1,4 +1,4 @@
-package com.miage.backendspring.dao;
+package com.miage.backendspring.repositories;
 
 import com.miage.backendspring.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
