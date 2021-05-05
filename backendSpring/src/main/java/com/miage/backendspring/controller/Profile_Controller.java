@@ -22,7 +22,7 @@ public class Profile_Controller {
 
     @GetMapping("/addProfile")
 
-        public boolean addProfile(@RequestParam("age") int age, @RequestParam("weight") int weight, @RequestParam("profileType") Enum<ProfileEnum>  profileType, @RequestParam("allergens") Set<Enum<AllergenEnum>> allergens) {
+        public boolean addProfile(@RequestParam("age") int age, @RequestParam("weight") int weight, @RequestParam("profileType") ProfileEnum profileType, @RequestParam("allergens") Set<AllergenEnum> allergens) {
         return profileService.createAndSaveProfile(age, weight, profileType, allergens);
     }
 
