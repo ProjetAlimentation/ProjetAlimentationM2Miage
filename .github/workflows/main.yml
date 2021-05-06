@@ -35,22 +35,26 @@ jobs:
           echo Add other actions to build,
           echo test, and deploy your project.
           
-      - name: jacoco-badge-generator
-      # You may pin to the exact commit or the version.
-      # uses: cicirello/jacoco-badge-generator@ecfc9b09fd4061f58e58bc40372a5c0dc0efea96
-        uses: cicirello/jacoco-badge-generator@v2.1.1
-        #with:
-          # Full path, relative to the root of the repository, to the jacoco csv file(s), including filename(s)
-          #jacoco-csv-file: # optional, default is target/site/jacoco/jacoco.csv
-          # The directory for storing badges, relative to the root of the repository.
-          #badges-directory: # optional, default is .github/badges
-          # The filename of the coverage badge.
-          #coverage-badge-filename: # optional, default is jacoco.svg
-          # The filename of the branches coverage badge.
-          #branches-badge-filename: # optional, default is branches.svg
-          # Controls whether or not to generate the coverage badge.
-          #generate-coverage-badge: # optional, default is true
-          # Controls whether or not to generate the branches coverage badge.
-          #generate-branches-badge: # optional
-          # Controls what happens if one or more jacoco.csv files do not exist.
-          #on-missing-report: # optional, default is fail
+      - name: Codacy Analysis CLI
+        # You may pin to the exact commit or the version.
+        # uses: codacy/codacy-analysis-cli-action@84fbefef91e53a3e8a5e031719a762ca706731d5
+        uses: codacy/codacy-analysis-cli-action@3.0.1
+        with:
+          # Run with verbose output
+          #verbose: # optional
+          # API project token to retrieve your remote Codacy configuration for the project being analyzed
+          #project-token: # optional
+          # API account token to retrieve your remote Codacy configuration for the project being analyzed
+          api-token: 173c2cdeb3dd42888ea0d2d6274e19d4 # optional    
+          
+      - name: Codacy Coverage Reporter
+        # You may pin to the exact commit or the version.
+        # uses: codacy/codacy-coverage-reporter-action@3f58b0e12285221110375dffef1150534700246b
+        uses: codacy/codacy-coverage-reporter-action@1.0.0
+        with:
+          # API project token to retrieve your remote Codacy configuration for the project being analyzed
+          #project-token: # optional
+          # API account token to retrieve your remote Codacy configuration for the project being analyzed
+          api-token: 173c2cdeb3dd42888ea0d2d6274e19d4 # optional
+          # Optional comma separated list of coverage reports to send to Codacy
+          #coverage-reports: # optional, default is 
