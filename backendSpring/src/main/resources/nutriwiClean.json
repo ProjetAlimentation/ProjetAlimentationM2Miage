@@ -2482,23 +2482,5 @@
       "Lorsque les carottes sont cuites, ajouter les lentilles égouttées, le curry, le sel et la crème fraîche.\nRemuer et laisser réduire un peu."
     ],
     "imageSrc": "/img/recettes/19351857_curry-de-lentilles-aux-carottes.jpg"
-  },
-  {
-    "name": "string",
-    "portion": 0,
-    "prepTime": 0,
-    "ingredients": [
-      "string"
-    ],
-    "profile": [
-      "string"
-    ],
-    "nutrition": [
-      "string"
-    ],
-    "preparationSteps": [
-      "string"
-    ],
-    "imageSrc": "string"
   }
 ]
