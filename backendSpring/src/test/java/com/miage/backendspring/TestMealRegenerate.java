@@ -7,7 +7,6 @@ import com.miage.backendspring.entity.diet.DishNutriwi;
 import com.miage.backendspring.repositories.UserRepository;
 import com.miage.backendspring.service.DietService;
 import com.miage.backendspring.service.profiles.AllergenEnum;
-import com.miage.backendspring.service.profiles.ProfileEnum;
 import com.miage.backendspring.service.profiles.RegimeEnum;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;

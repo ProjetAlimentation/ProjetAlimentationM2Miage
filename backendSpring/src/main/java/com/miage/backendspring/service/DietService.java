@@ -11,7 +11,6 @@ import com.miage.backendspring.entity.User;
 import com.miage.backendspring.entity.diet.DishNutriwi;
 import com.miage.backendspring.repositories.UserRepository;
 import com.miage.backendspring.service.profiles.AllergenEnum;
-import com.miage.backendspring.service.profiles.ProfileEnum;
 import com.miage.backendspring.service.profiles.RegimeEnum;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.lang3.EnumUtils;
