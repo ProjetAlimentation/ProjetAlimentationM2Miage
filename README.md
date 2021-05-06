@@ -1,4 +1,4 @@
-[![Codacy Badge](https://app.codacy.com/project/badge/Grade/14b2e1acd95546409dd6fc9b55dcb60c)](https://www.codacy.com?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=ProjetAlimentation/ProjetAlimentationM2Miage&amp;utm_campaign=Badge_Grade)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/14b2e1acd95546409dd6fc9b55dcb60c)](https://www.codacy.com?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=ProjetAlimentation/ProjetAlimentationM2Miage&amp;utm_campaign=Badge_Grade) [![Build Status](http://52.232.47.118:8080/buildStatus/icon?job=DietiCourseCIBackend)](http://52.232.47.118:8080/job/DietiCourseCIBackend/)
 # Plateforme DietiCourse
 
 ### Technologies
