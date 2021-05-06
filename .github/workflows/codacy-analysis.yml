@@ -46,16 +46,6 @@ jobs:
           #project-token: # optional
           # API account token to retrieve your remote Codacy configuration for the project being analyzed
           api-token: 173c2cdeb3dd42888ea0d2d6274e19d4 # optional
-          
-          
-      - name: Godacov Report
-        # You may pin to the exact commit or the version.
-        # uses: brpaz/godacov-action@bb1bc98e55d63b9331199b4e9ff2448e90a3c8ad
-        uses: brpaz/godacov-action@v1.1.1
-        with:
-          # The path to the generated report file
-          #reportPath: # default is coverage.out
-          # The identifier of the commit that is associated with the report
-          #commitId: 
-          # The token to authenticate with Codacy API
-          codacyToken: 173c2cdeb3dd42888ea0d2d6274e19d4
+      
+      
+ 
