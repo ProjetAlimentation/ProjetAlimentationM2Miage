@@ -1,6 +1,9 @@
 package com.miage.backendspring.entity;
 
 import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
