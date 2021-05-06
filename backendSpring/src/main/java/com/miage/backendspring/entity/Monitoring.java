@@ -1,17 +1,17 @@
 package com.miage.backendspring.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity(name = "MONITORING")
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class Monitoring {
@@ -20,16 +20,16 @@ public class Monitoring {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id_moni;
 
-    private double weight;
-    private int mental;
-    private int diet;
+    private Double weight;
+    private Integer mental;
+    private Integer diet;
     private LocalDate date;
-/*
-    @ManyToOne
-    @JoinColumn(name="id")
-    private User user;
-*/
 
+
+    @ManyToOne
+    @JoinColumn(name="username", nullable=false)
+    @JsonIgnore
+    private User user;
 
 }
 

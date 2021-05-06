@@ -3,15 +3,8 @@ package com.miage.backendspring.service;
 
 import com.miage.backendspring.entity.Profile;
 import com.miage.backendspring.repositories.ProfileRepository;
-import com.miage.backendspring.service.profiles.AllergenEnum;
-import com.miage.backendspring.service.profiles.ProfileEnum;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
-
-import java.util.Set;
-
-import static com.miage.backendspring.service.profiles.NutritionalQualityEnum.*;
-import static com.miage.backendspring.service.profiles.NutritionalQualityEnum.LOW_SATURATED_FATTY_ACIDS;
 
 @RequiredArgsConstructor
 @Component
@@ -22,7 +15,7 @@ public class ProfileService {
 
     public void createAndSaveProfile(Profile profile) {
         profileRepository.save(profile);
-        monitoringService.createAndSaveMonitoring(profile.getWeight(),2,2);
+        monitoringService.createAndSaveMonitoring(profile.getUser().getUsername(), profile.getWeight(),2,2);
 
     }
 

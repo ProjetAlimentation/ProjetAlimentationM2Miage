@@ -66,12 +66,12 @@ export class BackendService {
     return this.http.post<void>(this.backendUrl + '/updateLogin?username=' + login + '&password=' + password, {headers: this.getHeaders()});
   }
 
-  createMonitoring(weight: number, mental: number, diet: number ): Observable<void> {
-    return this.http.post<void>(this.backendUrl + '/addMonitoring?weight=' + weight + '&mental=' + mental + '&diet=' + diet, {headers: this.getHeaders()});
+  createMonitoring(username: string, weight: number, mental: number, diet: number ): Observable<void> {
+    return this.http.post<void>(this.backendUrl + '/addMonitoring?username=' + username + '&weight=' + weight + '&mental=' + mental + '&diet=' + diet, {headers: this.getHeaders()});
   }
 
-  getMonitoring(): Observable<Monitoring[]> {
-    return this.http.get<Monitoring[]>(this.backendUrl + '/getMonitoring', {headers: this.getHeaders()});
+  getMonitoring(username: string): Observable<Monitoring[]> {
+    return this.http.get<Monitoring[]>(this.backendUrl + '/getMonitoring?username=' + username, {headers: this.getHeaders()});
   }
 
 

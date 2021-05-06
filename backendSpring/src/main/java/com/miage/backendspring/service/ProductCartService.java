@@ -1,10 +1,10 @@
 package com.miage.backendspring.service;
 
+import com.miage.backendspring.entity.ProductCart;
+import com.miage.backendspring.entity.diet.OpenFoodFactsProduct;
 import com.miage.backendspring.repositories.OpenFoodFactsProductRepository;
 import com.miage.backendspring.repositories.ProductCartRepository;
 import com.miage.backendspring.repositories.UserRepository;
-import com.miage.backendspring.entity.ProductCart;
-import com.miage.backendspring.entity.diet.OpenFoodFactsProduct;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 

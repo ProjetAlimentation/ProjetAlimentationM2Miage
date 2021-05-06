@@ -1,23 +1,12 @@
 package com.miage.backendspring.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.miage.backendspring.service.profiles.AllergenEnum;
-import com.miage.backendspring.service.profiles.NutritionalQualityEnum;
-import com.miage.backendspring.service.profiles.ProfileEnum;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
-import java.util.EnumSet;
-import java.util.HashSet;
-import java.util.Set;
-
-import static com.miage.backendspring.service.profiles.NutritionalQualityEnum.*;
 
 @Entity(name = "PROFILE")
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder

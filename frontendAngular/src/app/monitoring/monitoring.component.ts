@@ -51,7 +51,9 @@ export class MonitoringComponent implements OnInit {
       etat: [null, Validators.required]
     });
 
-    this.backendService.getMonitoring().subscribe(o => {
+    const username = localStorage.getItem('token');
+
+    this.backendService.getMonitoring(username).subscribe(o => {
         this.lineChartLabels = o.map(x => x.date);
         this.lineChartData[0].data = o.map(x => x.weight);
         this.lineChartData[1].data = o.map(x => x.diet);
@@ -61,10 +63,13 @@ export class MonitoringComponent implements OnInit {
   }
 
   entrerMonitoring(): void {
+    const username = localStorage.getItem('token');
+
     if (!this.monitoringForm.valid) {
       return;
     } else {
       this.backendService.createMonitoring(
+        username,
         this.monitoringForm.controls.weight.value,
         this.monitoringForm.controls.etat.value,
         this.monitoringForm.controls.diet.value)
