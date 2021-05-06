@@ -2,6 +2,7 @@ package com.miage.backendspring;
 
 import com.miage.backendspring.dao.DietDAO;
 import com.miage.backendspring.entity.ProductCart;
+import com.miage.backendspring.entity.Profile;
 import com.miage.backendspring.entity.User;
 import com.miage.backendspring.entity.diet.DishNutriwi;
 import com.miage.backendspring.repositories.UserRepository;
@@ -21,7 +22,7 @@ import java.util.Map;
 import static org.mockito.Mockito.when;
 
 @SpringBootTest
-public class TestMealRegenerate {
+public class TestDietService {
 
 
     @Mock
@@ -34,13 +35,19 @@ public class TestMealRegenerate {
     DietService dietService;
 
     @Test
-    void contextLoads() {
+    void contextLoads() { //test de regeneration de repas au jour 3 pour le dejeuner pour un profil avec allergen = gluten_free
         User u = new User();
         u.setUsername("admin");
         u.setProductCart(ProductCart.builder().build());
 
         String dishKey = "Jour_3";
         int dejeunerIndex = 0, dinerIndex = 1;
+
+        Profile profile = new Profile();
+        //profile.setUser(u);
+        profile.setAllergen(AllergenEnum.GLUTEN_FREE.name());
+        profile.setRegime(null);
+        u.setProfile(profile);
 
         when(userRepository.getOne("admin")).thenReturn(u);
         List<DishNutriwi> dishes = Arrays.asList(
@@ -52,10 +59,12 @@ public class TestMealRegenerate {
 
         when(dietDAO.getDietDishList()).thenReturn(dishes);
 
+        System.out.println(dietService.getDishListByProfile(u.getUsername()));
+
         String oldWeeklyDiet = dietService.getWeeklyDiet(u.getUsername(), false);
         Map<String, List<DishNutriwi>> oldDietMap = dietService.weeklyDietStringToMap(oldWeeklyDiet);
 
-        //ici je teste qu'au jour 3 il n'y ai pas de repas autre que GLUTEN_FREE (couverture de la plupart des méthodes de dietService)
+        //ici je test qu'au jour 3 il n'y ai pas de repas autre que GLUTEN_FREE (couverture de la plupart des méthodes de dietService)
         Assertions.assertNotEquals(dishes.get(1), oldDietMap.get(dishKey).get(dejeunerIndex));
         Assertions.assertNotEquals(dishes.get(1), oldDietMap.get(dishKey).get(dinerIndex));
 

@@ -1,3 +1,4 @@
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/14b2e1acd95546409dd6fc9b55dcb60c)](https://www.codacy.com?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=ProjetAlimentation/ProjetAlimentationM2Miage&amp;utm_campaign=Badge_Grade)
 # Plateforme DietiCourse
 
 ### Technologies

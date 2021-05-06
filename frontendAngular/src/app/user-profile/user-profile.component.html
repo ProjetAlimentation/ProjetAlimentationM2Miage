@@ -13,7 +13,7 @@
 
 
     <mat-form-field class="form-field" >
-      <mat-label>Les allergenes</mat-label>
+      <mat-label>Allergènes</mat-label>
       <mat-select [(ngModel)]="allergenSelected" formControlName="allergen">
         <mat-option value="" selected></mat-option>
         <mat-option *ngFor="let allergen of allergenMap | keyvalue" [value]="allergen.key">
@@ -25,7 +25,7 @@
 
 
     <mat-form-field class="form-field" >
-      <mat-label>Regime</mat-label>
+      <mat-label>Régime alimentaire</mat-label>
 
       <mat-select [(ngModel)]="regimeSelected" formControlName="regime">
         <mat-option value="" selected></mat-option>
