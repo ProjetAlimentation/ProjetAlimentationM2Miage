@@ -1,0 +1,39 @@
+<div class="form-container">
+  <form [formGroup]="profileForm" (submit)="submit()">
+    <mat-form-field class="form-field" >
+      <mat-label> Entrez votre poids
+      </mat-label>
+      <input matInput formControlName="weight" required>
+    </mat-form-field>
+    <mat-form-field class="form-field" >
+      <mat-label> Votre âge
+      </mat-label>
+      <input matInput formControlName="age" required>
+    </mat-form-field>
+
+
+    <mat-form-field class="form-field" >
+      <mat-label>Les allergenes</mat-label>
+      <mat-select [(ngModel)]="allergenSelected" formControlName="allergen">
+        <mat-option value="" selected></mat-option>
+        <mat-option *ngFor="let allergen of allergenMap | keyvalue" [value]="allergen.key">
+          {{allergen.value}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+
+
+    <mat-form-field class="form-field" >
+      <mat-label>Regime</mat-label>
+
+      <mat-select [(ngModel)]="regimeSelected" formControlName="regime">
+        <mat-option value="" selected></mat-option>
+        <mat-option *ngFor="let regime of regimeMap | keyvalue" [value]="regime.key">
+          {{regime.value}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <button mat-raised-button color="primary" type="submit">Valider</button>
+  </form>
+</div>

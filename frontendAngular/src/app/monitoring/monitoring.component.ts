@@ -4,6 +4,7 @@ import {Router} from '@angular/router';
 import {BackendService} from '../backend.service';
 import {ChartDataSets} from 'chart.js';
 import {Color, Label} from 'ng2-charts';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 
 
@@ -13,7 +14,7 @@ import {Color, Label} from 'ng2-charts';
   styleUrls: ['./monitoring.component.css']
 })
 export class MonitoringComponent implements OnInit {
-  constructor( private formBuilder: FormBuilder, private router: Router, public backendService: BackendService)
+  constructor( private formBuilder: FormBuilder, private router: Router, public backendService: BackendService, private snackBar: MatSnackBar)
   {
   }
 
@@ -69,6 +70,7 @@ export class MonitoringComponent implements OnInit {
         this.monitoringForm.controls.diet.value)
         .subscribe(res => {
           this.ngOnInit();
+          this.snackBar.open('Validé', '', {duration: 2000});
         });
     }
   }

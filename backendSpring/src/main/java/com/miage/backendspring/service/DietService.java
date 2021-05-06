@@ -6,11 +6,15 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
 import com.miage.backendspring.dao.DietDAO;
 import com.miage.backendspring.entity.ProductCart;
+import com.miage.backendspring.entity.Profile;
 import com.miage.backendspring.entity.User;
 import com.miage.backendspring.entity.diet.DishNutriwi;
 import com.miage.backendspring.repositories.UserRepository;
+import com.miage.backendspring.service.profiles.AllergenEnum;
 import com.miage.backendspring.service.profiles.ProfileEnum;
+import com.miage.backendspring.service.profiles.RegimeEnum;
 import lombok.RequiredArgsConstructor;
+import org.apache.commons.lang3.EnumUtils;
 import org.springframework.stereotype.Component;
 
 import java.util.*;
@@ -24,20 +28,32 @@ public class DietService {
     private final UserRepository userRepository;
     //private final OpenFoodFactsAPI openFoodFactsAPI;
 
-    /**
-     * get the json dish list by the nutritional profile
-     *
-     * @param profileEnum
-     * @return
-     */
-    public List<DishNutriwi> getDishListByProfile(ProfileEnum profileEnum) {
+
+    public List<DishNutriwi> getDishListByProfile(String username) {
+        List<DishNutriwi> dietDishList = dietDAO.getDietDishList();
         List<DishNutriwi> dishes;
 
-        if (profileEnum != null) {
-            dishes = dietDAO.getDietDishList().stream().filter(e -> e.getProfile().contains(profileEnum.toString())).collect(Collectors.toList());
-        } else {
-            dishes = dietDAO.getDietDishList();
+        Profile profile = userRepository.getOne(username).getProfile();
+
+        String allergen = profile.getAllergen() != null ? profile.getAllergen(): "";
+        String regime = profile.getRegime() != null ? profile.getRegime(): "";
+
+
+        List<String> conditionList = new ArrayList<>();
+        if(EnumUtils.isValidEnum(AllergenEnum.class, allergen)){
+            conditionList.add(AllergenEnum.valueOf(allergen).toString());
         }
+        if(EnumUtils.isValidEnum(RegimeEnum.class, regime)){
+            conditionList.add(RegimeEnum.valueOf(regime).toString());
+        }
+
+
+        dishes = dietDishList
+                .stream()
+                .filter(e -> e.getProfile().containsAll(conditionList))
+                .collect(Collectors.toList());
+
+
         return dishes;
     }
 
@@ -46,13 +62,17 @@ public class DietService {
      * The map has a key which is a string value that corresponds to the "name" of the day (Jour_1, Jour_2, etc.)
      * For each key, the map contains a list of dishes (2 dishes a day)
      *
-     * @param profileEnum
+     * @param username
      * @return
      */
-    private Map<String, List<DishNutriwi>> generateWeeklyDietMap(ProfileEnum profileEnum) {
+    private Map<String, List<DishNutriwi>> generateWeeklyDietMap(String username) {
         Map<String, List<DishNutriwi>> weeklyDiet = new LinkedHashMap<>();
 
-        List<DishNutriwi> dishes = getDishListByProfile(profileEnum);
+        List<DishNutriwi> dishes = getDishListByProfile(username);
+
+        if(dishes.isEmpty()){
+            return weeklyDiet;
+        }
 
         Random rand = new Random();
 
@@ -113,14 +133,14 @@ public class DietService {
      *
      * @param username
      * @param regenerate
-     * @param profileEnum
      * @return
      */
-    public String getWeeklyDiet(String username, boolean regenerate, ProfileEnum profileEnum) {
-        Map<String, List<DishNutriwi>> weeklyDietMap = generateWeeklyDietMap(profileEnum);
+    public String getWeeklyDiet(String username, boolean regenerate) {
 
 
         if (regenerate) {
+            Map<String, List<DishNutriwi>> weeklyDietMap = generateWeeklyDietMap(username);
+
             String weeklyDiet = weeklyDietMapToString(weeklyDietMap);
             savDietToDB(username, weeklyDiet);
             return weeklyDiet;
@@ -132,6 +152,8 @@ public class DietService {
         if (productCart.getWeeklyDiet() != null) {
             return productCart.getWeeklyDiet();
         }
+
+        Map<String, List<DishNutriwi>> weeklyDietMap = generateWeeklyDietMap(username);
         String weeklyDiet = weeklyDietMapToString(weeklyDietMap);
         savDietToDB(username, weeklyDiet);
 
@@ -143,19 +165,18 @@ public class DietService {
      * Regenerate a dish in the weekly diet by nutritional profile using username account
      *
      * @param username
-     * @param profileEnum
      * @param dishKey
      * @param dishIndex
      * @return
      */
-    public String getRegenerateDishByProfile(String username, String dishKey, int dishIndex, ProfileEnum profileEnum) {
-        String userWeeklyDietStr = getWeeklyDiet(username, false, profileEnum);
+    public String getRegenerateDishByProfile(String username, String dishKey, int dishIndex) {
+        String userWeeklyDietStr = getWeeklyDiet(username, false);
         Map<String, List<DishNutriwi>> userWeeklyDietMap = weeklyDietStringToMap(userWeeklyDietStr);
 
         String oldDishName = userWeeklyDietMap.get(dishKey).get(dishIndex).getName();
 
         Random rand = new Random();
-        List<DishNutriwi> dishesList = getDishListByProfile(profileEnum);
+        List<DishNutriwi> dishesList = getDishListByProfile(username);
         DishNutriwi newDish = dishesList.get(rand.nextInt(dishesList.size()));
 
         while (newDish.getName().equals(oldDishName)) {

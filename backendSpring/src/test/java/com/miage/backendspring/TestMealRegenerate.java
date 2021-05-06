@@ -6,7 +6,9 @@ import com.miage.backendspring.entity.User;
 import com.miage.backendspring.entity.diet.DishNutriwi;
 import com.miage.backendspring.repositories.UserRepository;
 import com.miage.backendspring.service.DietService;
+import com.miage.backendspring.service.profiles.AllergenEnum;
 import com.miage.backendspring.service.profiles.ProfileEnum;
+import com.miage.backendspring.service.profiles.RegimeEnum;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -43,22 +45,22 @@ public class TestMealRegenerate {
 
         when(userRepository.getOne("admin")).thenReturn(u);
         List<DishNutriwi> dishes = Arrays.asList(
-                DishNutriwi.builder().name("Curry de lentilles aux carottes").profile(Arrays.asList(ProfileEnum.GLUTEN_FREE.toString(),ProfileEnum.VEGETARIAN.toString())).build(),
-                DishNutriwi.builder().name("Pizza végétarienne maison fraiche et bio sans additifs").profile(Arrays.asList(ProfileEnum.VEGETARIAN.toString())).build(),
-                DishNutriwi.builder().name("dish3").profile(Arrays.asList(ProfileEnum.VEGETALIEN.toString(),ProfileEnum.GLUTEN_FREE.toString())).build(),
+                DishNutriwi.builder().name("Curry de lentilles aux carottes").profile(Arrays.asList(AllergenEnum.GLUTEN_FREE.toString(),RegimeEnum.VEGETARIAN.toString())).build(),
+                DishNutriwi.builder().name("Pizza végétarienne maison fraiche et bio sans additifs").profile(Arrays.asList(RegimeEnum.VEGETARIAN.toString())).build(),
+                DishNutriwi.builder().name("dish3").profile(Arrays.asList(RegimeEnum.VEGETALIEN.toString(),AllergenEnum.GLUTEN_FREE.toString())).build(),
                 DishNutriwi.builder().name("dish4").profile(Arrays.asList()).build()
         );
 
         when(dietDAO.getDietDishList()).thenReturn(dishes);
 
-        String oldWeeklyDiet = dietService.getWeeklyDiet(u.getUsername(), false, ProfileEnum.GLUTEN_FREE);
+        String oldWeeklyDiet = dietService.getWeeklyDiet(u.getUsername(), false);
         Map<String, List<DishNutriwi>> oldDietMap = dietService.weeklyDietStringToMap(oldWeeklyDiet);
 
         //ici je teste qu'au jour 3 il n'y ai pas de repas autre que GLUTEN_FREE (couverture de la plupart des méthodes de dietService)
         Assertions.assertNotEquals(dishes.get(1), oldDietMap.get(dishKey).get(dejeunerIndex));
         Assertions.assertNotEquals(dishes.get(1), oldDietMap.get(dishKey).get(dinerIndex));
 
-        String updatedWeeklyDiet = dietService.getRegenerateDishByProfile(u.getUsername(), dishKey, dejeunerIndex, ProfileEnum.GLUTEN_FREE);
+        String updatedWeeklyDiet = dietService.getRegenerateDishByProfile(u.getUsername(), dishKey, dejeunerIndex);
         Map<String, List<DishNutriwi>> newDietMap = dietService.weeklyDietStringToMap(updatedWeeklyDiet);
 
         //comparaison des deux maps, ne doivent pas être identique après le changement sur le jour 3

@@ -11,7 +11,7 @@ public enum AllergenEnum {
     PEANUT_FREE("Sans arachides"),
     SOJA_FREE("Sans soja");
 
-    private String displayName;
+    private final String displayName;
 
 
 

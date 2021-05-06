@@ -43,7 +43,7 @@ export class LoginComponent implements OnInit {
             localStorage.setItem('isLoggedIn', 'true');
             localStorage.setItem('token', this.loginForm.controls.login.value);
 
-            this.router.navigate(['/dashboard']);
+            this.router.navigate(['/dashboard/weekly-diet']);
           } else {
             this.message = 'Please check your login and password';
           }

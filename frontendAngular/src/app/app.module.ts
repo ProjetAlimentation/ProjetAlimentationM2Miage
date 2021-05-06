@@ -32,6 +32,7 @@ import { MonitoringComponent } from './monitoring/monitoring.component';
 import { DishPageComponent } from './dish-page/dish-page.component';
 import { CartComponent } from './cart/cart.component';
 import { ChartsModule } from 'ng2-charts';
+import { UserProfileComponent } from './user-profile/user-profile.component';
 
 
 @NgModule({
@@ -44,7 +45,8 @@ import { ChartsModule } from 'ng2-charts';
     DishPageComponent,
     CartComponent,
     MonitoringComponent,
-    DishPageComponent
+    DishPageComponent,
+    UserProfileComponent
   ],
   imports: [
     HttpClientModule,

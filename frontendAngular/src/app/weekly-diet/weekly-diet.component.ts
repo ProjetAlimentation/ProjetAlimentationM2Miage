@@ -19,12 +19,6 @@ export class WeeklyDietComponent implements OnInit {
   dishMap: Map<string, Dish[]> = new Map<string, Dish[]>();
   selectedProfile: string;
 
-  profiles: ProfileInterface[] = [
-    {value: 'VEGETALIEN', viewValue: 'Végétalien'},
-    {value: 'VEGETARIAN', viewValue: 'Végétarien'},
-    {value: 'GLUTEN_FREE', viewValue: 'Sans gluten'},
-    {value: 'LACTOSE_FREE', viewValue: 'Sans lactose'}
-  ];
 
   constructor(private backendService: BackendService, private dialog: MatDialog) {}
 
@@ -37,10 +31,10 @@ export class WeeklyDietComponent implements OnInit {
   }
 
 
-  updateDietList(profile): void{
+  updateDietList(): void{
     const username = localStorage.getItem('token');
 
-    this.backendService.getDishList(username, true, profile).subscribe((dishMap) => {
+    this.backendService.getDishList(username, true).subscribe((dishMap) => {
       this.dishMap = dishMap;
       console.log(dishMap);
     });

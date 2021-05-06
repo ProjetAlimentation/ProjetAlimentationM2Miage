@@ -25,11 +25,9 @@ public class DietController {
 
     @Operation(summary = "Get weekly diet by profile")
     @GetMapping("/getWeeklyDietByProfile")
-    public ResponseEntity<String> getWeeklyDietByProfile(@RequestParam(value = "profile", required = false)
-                                                                     ProfileEnum profileEnum,
-                                                         @RequestParam String username,
+    public ResponseEntity<String> getWeeklyDietByProfile(@RequestParam String username,
                                                          @RequestParam boolean refresh){
-        return ResponseEntity.ok(dietService.getWeeklyDiet(username, refresh, profileEnum));
+        return ResponseEntity.ok(dietService.getWeeklyDiet(username, refresh));
     }
 
     @Operation(summary = "Add a dish")
@@ -67,7 +65,7 @@ public class DietController {
                                                              @RequestParam int dishIndex,
                                                              @RequestParam(required = false)
                                                                          ProfileEnum profile ){
-        return ResponseEntity.ok(dietService.getRegenerateDishByProfile(username, dishKey, dishIndex, profile));
+        return ResponseEntity.ok(dietService.getRegenerateDishByProfile(username, dishKey, dishIndex));
     }
 
 

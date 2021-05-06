@@ -1,4 +1,13 @@
+import {User} from './User';
+
 export interface ProfileInterface {
-  value: string;
-  viewValue: string;
+  id: number;
+  age: number;
+  weight: number;
+
+  profileType: string;
+  allergen: string;
+  regime: string;
+
+  user: User;
 }

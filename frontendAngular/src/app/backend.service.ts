@@ -6,6 +6,8 @@ import {OpenFoodFactsProduct} from './models/OpenFoodFactsProduct';
 import {ProductCart} from './models/ProductCart';
 import {environment} from '../environments/environment';
 import {Monitoring} from './models/Monitoring';
+// @ts-ignore
+import {ProfileInterface} from './models/ProfileInterface';
 
 @Injectable({
   providedIn: 'root'
@@ -36,9 +38,8 @@ export class BackendService {
     return this.http.post<OpenFoodFactsProduct[]>(this.backendUrl + '/getOpenFoodFactsProducts', productType, {headers: this.getHeaders()});
   }
 
-  getDishList(username: string, refresh: boolean, profile: string): Observable<Map<string, Dish[]>> {
-    console.log('profileRand ' + profile);
-    return this.http.get<Map<string, Dish[]>>(this.backendUrl + "/getWeeklyDietByProfile?username=" + username + '&refresh=' + refresh + '&profile=' + profile, {headers: this.getHeaders()});
+  getDishList(username: string, refresh: boolean): Observable<Map<string, Dish[]>> {
+    return this.http.get<Map<string, Dish[]>>(this.backendUrl + '/getWeeklyDietByProfile?username=' + username + '&refresh=' + refresh, {headers: this.getHeaders()});
   }
 
   getDishListAll(username: string, refresh: boolean): Observable<Map<string, Dish[]>> {
@@ -71,6 +72,15 @@ export class BackendService {
 
   getMonitoring(): Observable<Monitoring[]> {
     return this.http.get<Monitoring[]>(this.backendUrl + '/getMonitoring', {headers: this.getHeaders()});
+  }
+
+
+  getProfile(username: string): Observable<ProfileInterface> {
+    return this.http.get<ProfileInterface>(this.backendUrl + '/getProfile?username=' + username, {headers: this.getHeaders()});
+  }
+
+  saveProfile(profile: ProfileInterface): Observable<void> {
+    return this.http.post<void>(this.backendUrl + '/addProfile', profile, {headers: this.getHeaders()});
   }
 
   getHeaders(): HttpHeaders {

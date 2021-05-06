@@ -1,14 +1,9 @@
-<mat-form-field appearance="fill">
-  <mat-label>Regénerer la liste</mat-label>
-  <mat-select [(ngModel)]="selectedProfile" (selectionChange)="updateDietList($event.value)">
-    <mat-option *ngFor="let profile of profiles" [value]="profile.value">
-      {{profile.viewValue}}
-    </mat-option>
-  </mat-select>
 
+<div class="regen-list">
+  <button (click)="updateDietList()" mat-raised-button color="warn">Nouvelle diète</button>
 
+</div>
 
-</mat-form-field>
 
 <mat-grid-list cols="7" >
 

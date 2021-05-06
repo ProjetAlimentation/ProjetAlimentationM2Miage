@@ -10,7 +10,7 @@ public enum NutritionalQualityEnum {
     LOW_FAT ("Matières grasses en faible quantité"),
     LOW_SATURATED_FATTY_ACIDS ("Acides gras saturés en faible quantité");
 
-    private String displayName;
+    private final String displayName;
 
     @Override
     public String toString() { return displayName; }

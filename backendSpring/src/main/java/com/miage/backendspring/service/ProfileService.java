@@ -1,7 +1,6 @@
 package com.miage.backendspring.service;
 
-import com.miage.backendspring.entity.Profile.Allergens;
-import com.miage.backendspring.entity.Profile.NutritionalQuality;
+
 import com.miage.backendspring.entity.Profile;
 import com.miage.backendspring.repositories.ProfileRepository;
 import com.miage.backendspring.service.profiles.AllergenEnum;
@@ -9,7 +8,6 @@ import com.miage.backendspring.service.profiles.ProfileEnum;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
-import java.time.LocalDate;
 import java.util.Set;
 
 import static com.miage.backendspring.service.profiles.NutritionalQualityEnum.*;
@@ -20,8 +18,15 @@ import static com.miage.backendspring.service.profiles.NutritionalQualityEnum.LO
 public class ProfileService {
 
     private final ProfileRepository profileRepository;
+    private final MonitoringService monitoringService;
 
-    public boolean createAndSaveProfile(int age, int weight, Enum<ProfileEnum> profileType, Set<Enum<AllergenEnum>> allergens) {
+    public void createAndSaveProfile(Profile profile) {
+        profileRepository.save(profile);
+        monitoringService.createAndSaveMonitoring(profile.getWeight(),2,2);
+
+    }
+
+        /*public boolean createAndSaveProfile(int age, int weight, Enum<ProfileEnum> profileType, Set<Enum<AllergenEnum>> allergens) {
 
         boolean add = false;
         Profile profile = new Profile();
@@ -126,7 +131,23 @@ public class ProfileService {
         }
         return add;
     }
+*/
 
+
+    public Profile getProfile(String username){
+        Profile profile = profileRepository.getProfileByUser_Username(username);
+
+        Profile build = Profile.builder()
+                .id(profile.getId())
+                .age(profile.getAge())
+                .weight(profile.getWeight())
+                .allergen(profile.getAllergen())
+                .regime(profile.getRegime())
+                .profileType(profile.getProfileType())
+                .build();
+
+        return build;
+    }
 
 
 }
