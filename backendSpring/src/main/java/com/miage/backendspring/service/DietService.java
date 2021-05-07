@@ -141,7 +141,7 @@ public class DietService {
             Map<String, List<DishNutriwi>> weeklyDietMap = generateWeeklyDietMap(username);
 
             String weeklyDiet = weeklyDietMapToString(weeklyDietMap);
-            savDietToDB(username, weeklyDiet);
+            saveDietToDB(username, weeklyDiet);
             return weeklyDiet;
         }
 
@@ -154,7 +154,7 @@ public class DietService {
 
         Map<String, List<DishNutriwi>> weeklyDietMap = generateWeeklyDietMap(username);
         String weeklyDiet = weeklyDietMapToString(weeklyDietMap);
-        savDietToDB(username, weeklyDiet);
+        saveDietToDB(username, weeklyDiet);
 
         return weeklyDiet;
     }
@@ -185,12 +185,12 @@ public class DietService {
         userWeeklyDietMap.get(dishKey).set(dishIndex, newDish);
         String weeklyDietString = weeklyDietMapToString(userWeeklyDietMap);
 
-        savDietToDB(username, weeklyDietString);
+        saveDietToDB(username, weeklyDietString);
         return weeklyDietString;
     }
 
 
-    private void savDietToDB(String username, String weeklyDietString) {
+    private void saveDietToDB(String username, String weeklyDietString) {
         User admin = userRepository.getOne(username);
         ProductCart productCart = admin.getProductCart();
 
@@ -201,7 +201,6 @@ public class DietService {
 
     /**
      * Add a dish to the json dish list
-     *
      * @param dishNutriwi
      * @return
      */

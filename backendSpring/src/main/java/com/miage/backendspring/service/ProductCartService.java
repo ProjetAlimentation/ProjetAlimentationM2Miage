@@ -18,6 +18,8 @@ public class ProductCartService {
     private final ProductCartRepository productCartRepository;
     private final OpenFoodFactsProductRepository openFoodFactsProductRepository;
 
+
+
     public void addOpenFoodFactsProductsToCart(ProductCart productCart){
 
         ProductCart cart = userRepository.getOne(productCart.getUser().getUsername()).getProductCart();
@@ -27,7 +29,6 @@ public class ProductCartService {
             cart.getOpenFoodFactsProducts().addAll(productCart.getOpenFoodFactsProducts());
         }
         productCartRepository.save(cart);
-
     }
 
     public Set<OpenFoodFactsProduct> getCartElements(String userId){

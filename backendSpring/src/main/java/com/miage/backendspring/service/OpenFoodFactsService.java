@@ -39,23 +39,6 @@ public class OpenFoodFactsService {
             OpenFoodFactsResponse response = openFoodFactsAPI.getOpenFoodFactsProducts(str);
             if (!response.getProducts().isEmpty()) {
                 OpenFoodFactsProduct e = response.getProducts().get(0);
-
-                /*long count = 0;
-
-                if(e.getStores() == null){
-                    count = e.getStores().chars().filter(ch -> ch == ',').count();
-                }
-
-                StringBuilder stringBuilder = new StringBuilder();
-
-                if (count > 3) {
-                    stringBuilder.append(e.getStores(), 0, str.indexOf(","));
-                    stringBuilder.append(e.getStores(), 1, str.indexOf(","));
-                    stringBuilder.append(e.getStores(), 2, str.indexOf(","));
-                } else {
-                    stringBuilder.append(e.getStores());
-                }
-                e.setStores(stringBuilder.toString());*/
                 openFoodFactsProducts.add(e);
 
             }
