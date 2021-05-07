@@ -10,16 +10,16 @@
 
 ### Technologies
 <ol>
-<li>Backend Java : Spring et Maven</li>
+<li>Backend :Java Spring et Maven</li>
 <li>Frontend : Angular</li>
-<li>Base de données: MySQL et Json</li>  
-<li>Tests: JUnit et Mockito</li>
+<li>Base de données: H2 et Json</li>  
+<li>Tests unitaires: JUnit et Mockito</li>
 <li>Versionning et partgage de code: GitHub</li>
-<li>Intégration continue: Jenkins : accessible au lien http://52.232.47.118:8080/ (connexion avec admin/password) </li> 
+<li>Intégration continue: Jenkins </li> 
+<li>Déploiement : Microsoft Azure </li>
 <li>Suivi des issues : GitHub Boards </li> 
 <li>Analyse du code: Codacy</li>
-<li>Test Coverage : JaCoCo Code Coverage (11% overall coverage, 86% on DietService)</li>
-<li>Déploiement : Microsoft Azure </li>
+<li>Test Coverage : JaCoCo Code Coverage (21% covered ratio, 88% on DietService)</li>
 </ol>
 
 
@@ -27,6 +27,8 @@
 Lien disponible pour accéder à la plateforme DietiCourse : https://dieticourse-frontend.azurewebsites.net/
 
 Lien pour tester les fonctionnalités backend: https://dieticourse-backend.azurewebsites.net/swagger-ui/
+
+Lien pour accéder à Jenkins : http://52.232.47.118:8080/ (connexion avec admin/password) 
 
 #### Fonctionnalités disponibles dans le frontend
 
