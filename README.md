@@ -1,4 +1,5 @@
 [![Build Status](http://52.232.47.118:8080/buildStatus/icon?job=DietiCourseCIBackend)](http://52.232.47.118:8080/job/DietiCourseCIBackend/)
+[![Codacy Analysis](https://github.com/ProjetAlimentation/ProjetAlimentationM2Miage/actions/workflows/codacy-analysis.yml/badge.svg)](https://github.com/ProjetAlimentation/ProjetAlimentationM2Miage/actions/workflows/codacy-analysis.yml)
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/14b2e1acd95546409dd6fc9b55dcb60c)](https://www.codacy.com?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=ProjetAlimentation/ProjetAlimentationM2Miage&amp;utm_campaign=Badge_Grade) 
 [![codecov](https://codecov.io/gh/ProjetAlimentation/ProjetAlimentationM2Miage/branch/main/graph/badge.svg?token=JDV5VZEHDV)](https://codecov.io/gh/ProjetAlimentation/ProjetAlimentationM2Miage)
 [![Website shields.io](https://img.shields.io/website-up-down-green-red/http/shields.io.svg)](https://dieticourse-frontend.azurewebsites.net/)
